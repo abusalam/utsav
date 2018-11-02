@@ -1,0 +1,20 @@
+{
+    "name": "nic/utsav",
+    "description": "Utility Tool of Single window Application for Puja & Verification",
+    "type": "project",
+    "require": {
+        "almasaeed2010/adminlte": "^2.4"
+    },
+    "require-dev": {
+        "squizlabs/php_codesniffer": "^3.3",
+        "phpunit/phpunit": "^7.4"
+    },
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Abu Salam Parvez Alam",
+            "email": "abusalamparvezalam@gmail.com"
+        }
+    ],
+    "minimum-stability": "stable"
+}
