@@ -36,3 +36,4 @@ define("MEMO_NO", '-------/SDO(S)/Malda');
 define("MEMO_DATE", '--/10/2020');
 define("PUJA_YEAR", '2020');
 define("PUJA_DURATION", '--/10/2020 to --/10/2020');
+define("CHL_PS", "CHL HCP PKR RTA");
