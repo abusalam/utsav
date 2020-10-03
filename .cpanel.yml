@@ -1,5 +1,5 @@
 ---
 deployment:
  tasks:
-  - export DEPLOYPATH=../utsav
+  - export DEPLOYPATH=../../utsav
   - git --work-tree=$DEPLOYPATH checkout -f master
