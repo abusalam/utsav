@@ -186,7 +186,7 @@ function pop_up(id){
                         
                     } else {
 					
-					    $checkrecord=$ob->get_recs("application","*","$fld='Yes' and `ps`='".$_SESSION['ps']."'","org_name");
+					    $checkrecord=$ob->get_recs("application","*","$fld='Yes' and LEFT(`ps`,3) IN (\"".join('","', explode(' ', $_SESSION['ps']))."\")","org_name");
 					
 					}
 ?>

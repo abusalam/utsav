@@ -4,7 +4,8 @@ if($_SERVER['HTTPS']!='on') {
     header("Location:$redirect");
     exit();
 }
-if (strtotime(START_DATE)<time()) {
+include_once("config/config.php");
+if (strtotime(START_DATE)>time()) {
     include "welcome.php";
     exit();
 }

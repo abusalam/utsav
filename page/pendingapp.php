@@ -166,46 +166,36 @@ function pop_up(id){
 				<div class="content">
 				 
 					<section id="section-1">
-					<?php
-					if($_SESSION['cat']=='Power')
-					{
-					$fld='elec_per';
-					}
-					if($_SESSION['cat']=='Fire')
-					{
-					$fld='fir_per';
-					}
-					if($_SESSION['cat']==$_SESSION['ps'])
-					{
-					$fld='muni_per';
-					}
-					if($_SESSION['cat']=='Police')
-					{
-					$fld='police_per';
-					}
-					if($_SESSION['cat']=='Pollution')
-					{
-					$fld='polution_per';
-					}
-					if($_SESSION['cat']=='SDO')
-					{
-					$fld='final_per';
-					}
-					
+<?php
+if($_SESSION['cat']=='Power') {
+  $fld='elec_per';
+}
+if($_SESSION['cat']=='Fire') {
+  $fld='fir_per';
+}
+if($_SESSION['cat']==$_SESSION['ps']) {
+  $fld='muni_per';
+}
+if($_SESSION['cat']=='Police') {
+  $fld='police_per';
+}
+if($_SESSION['cat']=='Pollution') {
+  $fld='polution_per';
+}
 if($_SESSION['cat']=='SDO') {
-    /*$checkrecord=$ob->get_recs("application","*","$fld='' and `elec_per`='Yes' and `fir_per`='Yes'   and `police_per`='Yes' and `polution_per`='Yes' and `finalize`='Yes'","org_name");*/
-    $checkrecord=$ob->get_recs("application","*","$fld='' and `police_per`='Yes'","org_name");					
+  $fld='final_per';
+}
+
+if($_SESSION['cat']=='SDO') {
+  /*$checkrecord=$ob->get_recs("application","*","$fld='' and `elec_per`='Yes' and `fir_per`='Yes'   and `police_per`='Yes' and `polution_per`='Yes' and `finalize`='Yes'","org_name");*/
+  $checkrecord=$ob->get_recs("application","*","$fld='' and `police_per`='Yes'  and LEFT(`ps`,3) IN (\"".join('","', explode(' ', $_SESSION['ps']))."\")","org_name");					
 } else if($_SESSION['cat']=='Police') {
-    $checkrecord=$ob->get_recs("application","*","$fld='' and `elec_per`='Yes' and `finalize`='Yes' and `ps`='".$_SESSION['ps']."'","org_name");
-/*$checkrecord=$ob->get_recs("application","*","$fld='' and `elec_per`='Yes' and `fir_per`='Yes'  and `polution_per`='Yes' and `finalize`='Yes'","");*/	
+  /*$checkrecord=$ob->get_recs("application","*","$fld='' and `elec_per`='Yes' and `fir_per`='Yes'  and `polution_per`='Yes' and `finalize`='Yes'","");*/	
+  $checkrecord=$ob->get_recs("application","*","$fld='' and `elec_per`='Yes' and `finalize`='Yes' and LEFT(`ps`,3) IN (\"".join('","', explode(' ', $_SESSION['ps']))."\")","org_name");
 } else if($_SESSION['cat']=='admin') {
-    $checkrecord=$ob->get_recs("application","*","final_per!='Yes'","org_name");	
+  $checkrecord=$ob->get_recs("application","*","final_per!='Yes'","org_name");	
 } else {
-    if($_SESSION['cat']==$_SESSION['ps']) {
-        $checkrecord=$ob->get_recs("application","*","$fld='' and `finalize`='Yes' and `ps`='".$_SESSION['cat']."'","org_name");
-    } else {
-        $checkrecord=$ob->get_recs("application","*","$fld='' and `finalize`='Yes' ","org_name");
-    }
+  $checkrecord=$ob->get_recs("application","*","$fld='' and `finalize`='Yes'  and LEFT(`ps`,3) IN (\"".join('","', explode(' ', $_SESSION['ps']))."\")","org_name");
 }
 //$checkUser=cek($user,$pass);	
 
