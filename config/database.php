@@ -91,7 +91,7 @@ class database
  $q = "update $table set $fields where $where";
 		  $result = mysql_query($q);
         
-    echo $q;
+    //echo $q;
         if($result || $result != 0)
             return true;
         else
