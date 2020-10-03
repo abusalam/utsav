@@ -3,8 +3,6 @@ require('fpdf.php');
 include_once("config/config.php");
 include_once("config/database.php");
 
-$MemoNo     = MEMO_NO;
-$Dated      = MEMO_DATE;
 $Puja       = PUJA_NAME;
 $PujaYear   = PUJA_YEAR;
 $During     = PUJA_DURATION;
@@ -18,30 +16,37 @@ if(isset($_REQUEST['apppanel'])=='yes') {
   $ex=explode('.',$sendid);
   $checkrecord=$ob->get_rec("application","*","`final_per`='Yes' and `id`='".$ex[1]."'");
 }
-$add_ps='Address- '.$checkrecord->org_address.', PS- '.$checkrecord->ps.', Dist.- Malda (West Bengal)';
 
 if(strstr(CHL_PS, substr($checkrecord->ps, 0, 3)) === false) {
-  $sign = 'images/SDO-Sadar-Sign.png';
+  $MemoNo = MEMO_NO_CHL;
+  $Dated  = MEMO_DATE_CHL;
+  $sign   = 'images/SDO-Sadar-Sign.png';
+  $SubDiv = SDIV_CHL;
 } else {
-  $sign = 'images/SDO-Chanchal-Sign.png';
+  $MemoNo = MEMO_NO;
+  $Dated  = MEMO_DATE;
+  $sign   = 'images/SDO-Chanchal-Sign.png';
+  $SubDiv = SDIV_SADAR;
 }
 $pdf = new FPDF();
 $pdf->AddPage();
 
-$logo=$pdf->Image('images/WB-Logo.png',100,5,12);
-$logo=$pdf->Image('images/SDO-Sadar-Sign.png',155,205,33,17);
-$logo=$pdf->Image('images/SDO-Sadar-Sign.png',155,252,33,17);
+$PS     = substr($checkrecord->ps, 3);
+$add_ps = 'Address- '.$checkrecord->org_address.', PS- '.$PS.', Dist.- Malda (West Bengal)';
+$logo   = $pdf->Image('images/WB-Logo.png',100,5,12);
+$logo   = $pdf->Image('images/SDO-Sadar-Sign.png',155,205,33,17);
+$logo   = $pdf->Image('images/SDO-Sadar-Sign.png',155,252,33,17);
 
 $pdf->SetFont('Arial','',8);
 $pdf->SetXY(140,218);
 $pdf->Cell(50,3,'Sub-Divisional Officer',0,1,'C');
 $pdf->SetX(140);
-$pdf->Cell(50,3,'Malda Sadar, Malda',0,1,'C');
+$pdf->Cell(50,3,$SubDiv . ', Malda',0,1,'C');
 
 $pdf->SetXY(140,265);
 $pdf->Cell(50,3,'Sub-Divisional Officer',0,1,'C');
 $pdf->SetX(140);
-$pdf->Cell(50,3,'Malda Sadar, Malda',0,1,'C');
+$pdf->Cell(50,3,$SubDiv . ', Malda',0,1,'C');
 
 $pdf->SetXY(10,16);
 
@@ -52,14 +57,14 @@ $pdf->SetFont('Arial','',8);
 $pdf->Cell(190,3,'Office of the Sub Divisional Officer',0,1,'C');
 
 $pdf->SetFont('Arial','',7);
-$pdf->Cell(190,3,'Malda Sadar, Malda',0,1,'C');
+$pdf->Cell(190,3, $SubDiv . ', Malda',0,1,'C');
 
 $pdf->SetXY(10,20);
 $pdf->SetFont('Arial','',8);
 $pdf->Cell(80,3,'Memo No. ' . $MemoNo);
 $pdf->Cell(110,3,'Date: ' . $Dated,0,1,'R');
 $pdf->SetFont('Arial','B',8);
-$pdf->Cell(0,10,'From: The Sub-Divisional Officer (Sadar), Malda',0,1);
+$pdf->Cell(0,10,'From: The Sub-Divisional Officer, ' . $SubDiv,0,1);
 $pdf->Cell(0,3,'To: ' . $checkrecord->org_name,0,1);
 $pdf->Cell(0,3, $add_ps,0,1);
 
@@ -67,7 +72,7 @@ $pdf->SetFont('Arial','BU',8);
 $pdf->Cell(0,10,'SUB: 	' . $Puja . ' Permission with permission for use of mike/loud speakers/boxes in Public subject to conditions.',0,1,'C');
 
 $pdf->SetFont('Arial','',8);
-$pdf->Write(4,'	  In response to his/her prayer / petition permission is hereby accorded to hold `' . $Puja . ' - ' . $PujaYear . '` along with permission of using microphone in this connection under ' . $checkrecord->ps . ' area under Malda district from ' . $During . ' on condition of strict compliance of following instructions:');
+$pdf->Write(4,'	  In response to his/her prayer / petition permission is hereby accorded to hold `' . $Puja . ' - ' . $PujaYear . '` along with permission of using microphone in this connection under ' . $PS . ' area under Malda district from ' . $During . ' on condition of strict compliance of following instructions:');
 $pdf->Ln();
 $pdf->Write(4,'1. Use of microphones / loudspeakers / Sound Boxes will be permitted from 07-00 A.M to 11-00 A.M & 06-00 P.M to 10-00 P.M each day and sound limiter must be fitted with the amplifier to reduce the sound level as per Order of Hon`ble High Court, Calcutta passed in connection with sound pollution cases. The Sound level should not exceed 65 decibels in non-residential and 55 decibels in mixed residential areas.');
 $pdf->Ln();
@@ -99,7 +104,7 @@ $pdf->Write(4,'14. Procession for Immersion should be made as per direction / gu
 $pdf->Ln();
 $pdf->Write(4,'15. Immersion must be completed by the date as fixed by the State Govt. & as per direction of local Police & Civil administration. Separate permission for Immersion procession route and timings will be taken from local Thana.');	
 $pdf->Ln();
-$pdf->Write(4,'16. Road cannot be encroached by any means.');	
+$pdf->Write(4,'16. Road cannot be encroached by any means.');
 $pdf->Ln();
 $pdf->Write(4,'17. Immersion must be completed as per direction of local Police Administration & Civil Administration.');
 $pdf->Ln();
@@ -130,17 +135,17 @@ $pdf->Write(4,'Copy forwarded to:- For kind information & necessary action pleas
 $pdf->Ln();
 $pdf->Write(4,'1)	The Officer In Charge, Judicial Munshikhana, Malda Collectorate, Malda.');
 $pdf->Ln();
-$pdf->Write(4,'2)	The Chairman, Englishbazar / Old Malda Municipality, Malda. ');
+// $pdf->Write(4,'2)	The Chairman, Englishbazar / Old Malda Municipality, Malda. ');
+// $pdf->Ln();
+$pdf->Write(4,'2)	The Inspector-in-Charge/Officer-in-Charge, ' . $PS . ' Police Station for information with the direction to monitor the situation to maintain Law & Order during the Puja days and to confirm that no road is encroached by making of Pandal by the Organiser.');
 $pdf->Ln();
-$pdf->Write(4,'3)	The Inspector-in-Charge, English Bazar / Malda Police Station for information with the direction to monitor the situation to maintain Law & Order during the Puja days and to confirm that no road is encroached by making of Pandal by the Organiser.');
+$pdf->Write(4,'3)	The Officer-In-Charge, Fire Station, Malda for information & taking necessary action.');
 $pdf->Ln();
-$pdf->Write(4,'4)	The Officer-In-Charge, Fire Station, Malda for information & taking necessary action.');
+$pdf->Write(4,'4)	The Station Manager of Gr. E / Supply, W.B.S.E.D.C.L Malda for information & necessary action.');
 $pdf->Ln();
-$pdf->Write(4,'5)	The Station Manager of Gr. E / Supply, W.B.S.E.D.C.L Malda for information & necessary action.');
+$pdf->Write(4,'5)	The Asstt. Environmental Engineer, W.B.P.C.B., Malda Regional Office, Malda. He is requested to keep his close vigil on the situation and may take necessary action as per rule.');
 $pdf->Ln();
-$pdf->Write(4,'6)	The Asstt. Environmental Engineer, W.B.P.C.B., Malda Regional Office, Malda. He is requested to keep his close vigil on the situation and may take necessary action as per rule.');
-$pdf->Ln();
-$pdf->Write(4,'7)	 C.A. to D.M, Malda.');
+$pdf->Write(4,'6)	 C.A. to D.M, Malda.');
 
 // $pdf->SetY(266);
 // $pdf->Cell(0,6,'Department Numbers:-',0,1);

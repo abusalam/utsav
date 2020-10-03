@@ -37,3 +37,7 @@ define("MEMO_DATE", '--/10/2020');
 define("PUJA_YEAR", '2020');
 define("PUJA_DURATION", '--/10/2020 to --/10/2020');
 define("CHL_PS", "CHL HCP PKR RTA");
+define("SDIV_CHL", "Chanchal");
+define("SDIV_SADAR", "Malda Sadar");
+define("MEMO_NO_CHL", '-------/SDO(S)/Malda');
+define("MEMO_DATE_CHL", '--/10/2020');
