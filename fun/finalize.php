@@ -8,19 +8,21 @@ include_once("../config/database.php");
 $ob= new database();
 $cyear=date('Y');
 $checkrecords=$ob->get_rec("application","*","user_id='".$_SESSION['id']."' AND ps='".$_SESSION['ps']."'");
-$ln = strlen((string)$checkrecords->id);
-if($ln=='1') {
-	$ln='000'.$checkrecords->id;
-}
-if($ln=='2') {
-	$ln='00'.$checkrecords->id;
-}
-if($ln=='3') {
-	$ln='0'.$checkrecords->id;
-}
-if($ln=='4') {
-	$ln=$checkrecords->id;
-}
+// $ln = strlen((string)$checkrecords->id);
+// if($ln=='1') {
+// 	$ln='000'.$checkrecords->id;
+// }
+// if($ln=='2') {
+// 	$ln='00'.$checkrecords->id;
+// }
+// if($ln=='3') {
+// 	$ln='0'.$checkrecords->id;
+// }
+// if($ln=='4') {
+// 	$ln=$checkrecords->id;
+// }
+
+$ln=str_pad($checkrecords->id, 4, "0", STR_PAD_LEFT);
 
 $disable = false;
 switch ('') {

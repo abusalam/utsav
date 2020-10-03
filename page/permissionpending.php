@@ -1,13 +1,4 @@
 <?php
-
-include_once("config/config.php");
-include_once("config/database.php");
-
-
-
-$ob= new database();
-
-
 include"lib/header.php";
 include"lib/menu.php";
 ?> 
@@ -138,166 +129,46 @@ function pop_up(id){
 </style>
 
 
-<div class="content-wrapper">
+    <div class="content-wrapper">
         <!-- Content Header (Page header) -->
         <section class="content-header">
-          <h1>
-           Appliaction Submission
-            <small></small>
-          </h1>
-		  <?php 
-		  $checkrecords=$ob->get_rec("application","*","user_id='".$_SESSION['id']."' AND ps='".$_SESSION['ps']."'");
-		  
-		  ?>
-		  
-				  
-				  
-				  <div style="margin-left:height:70px; background-color:#9ECFCF; text-align:center"> <?php if($_REQUEST[edit]=='fail') { echo "<b style='color:red;padding:10px'>Error in Data Updation.</b>"; } ?></div>
-				  
-				  <div style="margin-left:height:70px; background-color:#9ECFCF; text-align:center" class="video-field-new"> <?php if($_REQUEST[delete]=='successfull') { echo "<b style='color:green;padding:10px'>Data Successfully Deleted.</b>"; } ?></div>
-				  
-				  
-				  <div style="margin-left:height:70px; background-color:#9ECFCF; text-align:center"> <?php if($_REQUEST[delete]=='fail') { echo "<b style='color:red;padding:10px'>Error in Data Deletion.</b>"; } ?></div> 
-				  
-		 <ol class="breadcrumb">
-            <li><a href="indexes.php?action=dashboard"><i class="fa fa-dashboard"></i> Dashboard</a></li>
-           <li><a href="indexes.php?action=changespass"><i class="active"></i> Change Password</a></li>
-			
-			<li class="active"> <a href="logout.php">Logout</a></li>
-			<li class="active"> </li>
-			<li class="active"> </li>
-			
-          </ol> 		  
-          
+          <h1>Application for permission to hold <?php echo PUJA_NAME;?></h1>
         </section>
-
         <!-- Main content -->
         <section class="content">
           <div class="row">
-            <div class="col-xs-12">
-              <!-- /.box -->
-<div id="overlay_form" style="display:none;z-index:9999999">
- </div>
-              <div class="box">
-                <div class="box-header">
-                  <h3 class="box-title"></h3>
-                </div><!-- /.box-header -->
-                <div class="box-body">
-				
-                  
-					
-				
-
-
-	
-
-	
- 
- 	<div>
-				
-						<?php include "lib/menu_header.php"?>
-					
-				<div class="content">
-				 
-					<section id="section-1">
-					<?php
-					
-					$checkrec=$ob->get_rec("application","*","user_id='".$_SESSION['id']."' AND ps='".$_SESSION['ps']."'");
-
-
-
-
-?>
-						<div class="mediabox" style="width:960px">
-							
-							
-							<table style="padding-bottom:60px">
-							
-							 <tr height="40"><td width="700"><b><p style="color:#0000CC">Your appliaction still has not been approved by administration. </p><p style="color:#FF0000">Permission letter will be generated after final approval.</p> </b></td><td style="padding-right:10px"> </td><td></td>
-						 
-						 
-						 </tr>
-						 
-						 </table>
-							
-						
-
-
-
-
-
-							
-
-
-						 
-                      
-						
-							
-						</div>
-						
-						
-					</section>
-					 <div style="margin-left:height:70px; text-align:center" > <?php if($_REQUEST[msg]=='success') { echo "<b style='color:green;padding:10px'>Thank you.";?><br><?php echo " You have finalised your application. Your appliaction ID nunber is "?><?php echo $checkrecords->app_id ; echo " </b>"; } ?></div>
-					
-				</div><!-- /content -->
-			</div><!-- /tabs -->
-			
-		<script src="js_tab/cbpFWTabs.js"></script>
-		<script>
-			new CBPFWTabs( document.getElementById( 'tabs' ) );
-		</script>												
-	 
-
-
-
-                      
-                      
-                    
-				  </form>
-                </div><!-- /.box-body -->
-              </div><!-- /.box -->
+            <div class="col-xs-12"><!-- /.box -->
+                <div id="overlay_form" style="display:none;z-index:9999999"></div>
+                <div class="box">
+                    <div>
+                        <div class="box-header">
+                            <h3 class="box-title"></h3>
+                        </div><!-- /.box-header -->
+                        <div class="box-body">
+        	                <div class="content">
+                        		<section id="section-8">
+                        			<div class="mediabox" style="width:700px">
+<?php $checkrecords=$ob->get_rec("application","*","user_id='".$_SESSION['id']."' AND ps='".$_SESSION['ps']."'"); ?>
+<?php if ($checkrecords->final_per=='Yes'): ?>
+                                        <div style="color:#006600;font-size:32px">Permitted on <?=$checkrecords->final_per_date?></div>
+<?php elseif ($checkrecords->final_per=='No'): ?> 
+                                        <div style="color:#FF0000;font-size:32px">Rejected on <?=$checkrecords->final_per_date?></div>
+<?php else: ?>
+                                        <div style="color:#FF00FF;font-size:32px">Your application is in process.</div>
+                                        <div style="color:#006600;font-size:24px">Permission letter will be generated after final approval.</div>
+<?php endif ?>
+                        			</div>
+                        		</section>
+        		            </div><!-- /content -->
+                        </div><!-- /.box-body -->
+                    </div><!-- /tabs -->
+    		        <script src="js_tab/cbpFWTabs.js"></script>
+            		<script>
+            			new CBPFWTabs( document.getElementById( 'tabs' ) );
+            		</script>												
+                </div><!-- /.box -->
             </div><!-- /.col -->
           </div><!-- /.row -->
         </section><!-- /.content -->
-      </div>
-	  
-	   <footer class="main-footer">
-        <div class="pull-right hidden-xs">
-           <img src="logo.png"  style="margin-top:-7px">
-        </div>
-        <strong>Copyright &copy; 2016<a href=""> NIC</a>.</strong> All rights reserved.
-      </footer>
     </div><!-- ./wrapper -->
-
-    <!-- jQuery 2.1.3 -->
-    <script src="plugins/jQuery/jQuery-2.1.3.min.js"></script>
-    <!-- Bootstrap 3.3.2 JS -->
-    <script src="bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
-    <!-- DATA TABES SCRIPT -->
-    <script src="plugins/datatables/jquery.dataTables.js" type="text/javascript"></script>
-    <script src="plugins/datatables/dataTables.bootstrap.js" type="text/javascript"></script>
-    <!-- SlimScroll -->
-    <script src="plugins/slimScroll/jquery.slimscroll.min.js" type="text/javascript"></script>
-    <!-- FastClick -->
-    <script src='plugins/fastclick/fastclick.min.js'></script>
-    <!-- AdminLTE App -->
-    <script src="dist/js/app.min.js" type="text/javascript"></script>
-    <!-- AdminLTE for demo purposes -->
-    <script src="dist/js/demo.js" type="text/javascript"></script>
-    <!-- page script -->
-  <!--<script type="text/javascript">
-      $(function () {
-        $("#example1").dataTable();
-        $('#example2').dataTable({
-          "bPaginate": false,
-          "bLengthChange": false,
-          "bFilter": false,
-          "bSort": true,
-          "bInfo": true,
-          "bAutoWidth": false
-        });
-      });
-    </script>-->
-	  <?php
-     //include"lib/footer.php";
-	 ?>
+    <?php include "lib/footer.php"; ?>

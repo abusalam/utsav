@@ -1,14 +1,14 @@
 <?php
 
 //header('Content-Type: text/html;');
-$username = "dmmalda"; //username of the department 
-$password = "Malda@123#$"; //password of the department 
-$senderid = "DMMLDA"; //senderid of the deparment 
+$username = SMS_CDAC_USER; //username of the department 
+$password = SMS_CDAC_PASS; //password of the department 
+$senderid = SMS_SENDER_ID; //senderid of the deparment 
 //$message = "Your Normal message here "; //message content 
 //$messageUnicode = "????????????????????????? "; //message content in unicode 
 //$mobileno = "9434025206"; //if single sms need to be send use mobileno keyword 
 //$mobileNos = "86XXXXXX72,79XXXXXX00"; //if bulk sms need to send use mobileNos as keyword and mobile number seperated by commas as value 
-$deptSecureKey = "dee03d36-e60c-4efc-9d34-650159b1fc9a"; //departsecure key for encryption of message... 
+$deptSecureKey = SMS_CDAC_SECURE_KEY; //departsecure key for encryption of message... 
 $encryp_password = sha1(trim($password));
 
 //call method and pass value to send single sms, uncomment next line to use 

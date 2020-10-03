@@ -1,5 +1,3 @@
-<!--<div style="background:#999900; height:10px; width:680px" >
-</div>-->
 <?php 
 $ex=explode("=",$_SERVER['REQUEST_URI']);
 
@@ -15,24 +13,13 @@ $ex=explode("=",$_SERVER['REQUEST_URI']);
 	<span><a href="indexes.php?action=upload" <?php if($ex[1]=='upload') { ?> class="myButton_ative" <?php } else { ?>  class="myButton1" <?php  } ?> ><span style="padding:2px; font-size:13px; font-weight:100; ">Upload</span></a></span>					
 			
 			<span><a href="indexes.php?action=checklist" <?php if($ex[1]=='checklist') { ?> class="myButton_ative" <?php } else { ?>  class="myButton1" <?php  } ?> ><span style="padding:2px; font-size:13px; font-weight:100; ">Checklist</span></a></span>	
-				<?php if ($_SESSION['cat']=='') {
-				
-				$checkUser=$ob->get_rec("application","*","`user_id`='".$_SESSION['id']."'");
-//$checkUser=cek($user,$pass);	
-
-if($checkUser){
-
-
-				?>
-			<span><a href="indexes.php?action=preview&sendvalue=<?php  echo base64_encode ('id.'.$checkUser->id.'.val'); ?>"class="myButton1"  target="_blank"><span style="padding:2px; font-size:13px; font-weight:100; ">Preview</span></a></span>
-			<?php  } else  {  ?>
-				<span><a href="indexes.php?action=preview&sendvalue=<?php  echo base64_encode ('id.'.$checkUser->id.'.val'); ?>"class="myButton1"  target="_blank"><span style="padding:2px; font-size:13px; font-weight:100; ">Preview</span></a></span>
-				<?php  }  } ?>
+<?php if ($_SESSION['cat']=='') :?>
+	<?php $checkUser=$ob->get_rec("application","*","`user_id`='".$_SESSION['id']."'");?>
+    <?php if($checkUser):?>
+	            <span><a href="indexes.php?action=preview&sendvalue=<?php  echo base64_encode ('id.'.$checkUser->id.'.val'); ?>" class="myButton1"  target="_blank"><span style="padding:2px; font-size:13px; font-weight:100; ">Preview</span></a></span>
+	<?php endif ?>
+<?php  endif ?>
 			
-			
-			<!--<div style="background:#999900; height:10px; width:680px" >
-</div>-->
-
 <style>
 .myButton1 {
 	-moz-box-shadow:inset 0px 1px 0px 0px #fff6af;
@@ -170,3 +157,4 @@ if($checkUser){
 }
 
 </style>
+<div style="color:#FF0000;font-size:32px">Last Date of Application for <?=PUJA_NAME . ' is ' . CLOSING_DATE?>.</div>

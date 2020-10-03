@@ -141,29 +141,11 @@ function pop_up(id){
 <div class="content-wrapper">
         <!-- Content Header (Page header) -->
         <section class="content-header">
-          <h1>
-           Application Submission
-            <small></small>
-          </h1>
+          <h1>Application for permission to hold <?php echo PUJA_NAME;?></h1>
 		  <div style="margin-left:height:70px; background-color:#9ECFCF; text-align:center" class="video-field-new"> <?php if($_REQUEST[edit]=='successfull') { echo "<b style='color:green;padding:10px'>Data Successfully Updated.</b>"; } ?></div>
-				  
-				  
-				  <div style="margin-left:height:70px; background-color:#9ECFCF; text-align:center"> <?php if($_REQUEST[edit]=='fail') { echo "<b style='color:red;padding:10px'>Error in Data Updation.</b>"; } ?></div>
-				  
-				  <div style="margin-left:height:70px; background-color:#9ECFCF; text-align:center" class="video-field-new"> <?php if($_REQUEST[delete]=='successfull') { echo "<b style='color:green;padding:10px'>Data Successfully Deleted.</b>"; } ?></div>
-				  
-				  
-				  <div style="margin-left:height:70px; background-color:#9ECFCF; text-align:center"> <?php if($_REQUEST[delete]=='fail') { echo "<b style='color:red;padding:10px'>Error in Data Deletion.</b>"; } ?></div> 
-				  
-		 <ol class="breadcrumb">
-            <li><a href="indexes.php?action=dashboard"><i class="fa fa-dashboard"></i> Dashboard</a></li>
-           <li><a href="indexes.php?action=changespass"><i class="active"></i> Change Password</a></li>
-			
-			<li class="active"> <a href="logout.php">Logout</a></li>
-			<li class="active"> </li>
-			<li class="active"> </li>
-          </ol> 		  
-          
+		  <div style="margin-left:height:70px; background-color:#9ECFCF; text-align:center"> <?php if($_REQUEST[edit]=='fail') { echo "<b style='color:red;padding:10px'>Error in Data Updation.</b>"; } ?></div>
+		  <div style="margin-left:height:70px; background-color:#9ECFCF; text-align:center" class="video-field-new"> <?php if($_REQUEST[delete]=='successfull') { echo "<b style='color:green;padding:10px'>Data Successfully Deleted.</b>"; } ?></div>
+		  <div style="margin-left:height:70px; background-color:#9ECFCF; text-align:center"> <?php if($_REQUEST[delete]=='fail') { echo "<b style='color:red;padding:10px'>Error in Data Deletion.</b>"; } ?></div> 
         </section>
 
         <!-- Main content -->
@@ -258,14 +240,15 @@ Provision of sufficient water of the fighting which shall not be less than 0.75L
 There must be a 04 (four) feet clear open space from the poperty line of the building, boundary wall or any other permanent structure as per judgment of the Hon'ble High Court, Calcutta Vid W.T.No.856 of 2009 dated 15.09.2009.</p>
 
 
-<b style="color:#FF0000">* </b><span> Agree </span><span  style="padding-top:20px"><input  type="checkbox"  id="fireagree"  width="width:20px" 
-						
-						 name="fireagree"  <?php if($checkrec->fir_agree=='on') { ?>   checked="checked"<?php }  ?>	   />
-						 
-						 
-						  <?php if($checkrec){ ?>  <input  type="hidden"  
-						
-						 name="nid"     value="<?php echo $checkrec->id; ?>"  <?php }  ?> /></span></td>
+<b style="color:#FF0000">* </b>
+<span> Agree </span>
+<span  style="padding-top:20px">
+    <input  type="checkbox"  id="fireagree"  width="width:20px" name="fireagree" <?php if($checkrec->fir_agree=='on') { echo 'checked="checked"'; } ?>/>
+<?php if($checkrec):?>
+    <input  type="hidden" name="nid" value="<?=$checkrec->id?>"/>
+<?php endif ?>
+</span>
+</td>
 						 </tr>
 						<tr height="40"><td colspan="6" align="center"><input  type="submit"  
 						
@@ -300,29 +283,8 @@ There must be a 04 (four) feet clear open space from the poperty line of the bui
         </section><!-- /.content -->
       </div>
 	  
-	   <footer class="main-footer">
-        <div class="pull-right hidden-xs">
-           <img src="logo.png"  style="margin-top:-7px">
-        </div>
-        <strong>Copyright &copy; 2016<a href=""> NIC</a>.</strong> All rights reserved.
-      </footer>
+    <?php include"lib/footer.php"; ?>
     </div><!-- ./wrapper -->
-
-    <!-- jQuery 2.1.3 -->
-    <script src="plugins/jQuery/jQuery-2.1.3.min.js"></script>
-    <!-- Bootstrap 3.3.2 JS -->
-    <script src="bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
-    <!-- DATA TABES SCRIPT -->
-    <script src="plugins/datatables/jquery.dataTables.js" type="text/javascript"></script>
-    <script src="plugins/datatables/dataTables.bootstrap.js" type="text/javascript"></script>
-    <!-- SlimScroll -->
-    <script src="plugins/slimScroll/jquery.slimscroll.min.js" type="text/javascript"></script>
-    <!-- FastClick -->
-    <script src='plugins/fastclick/fastclick.min.js'></script>
-    <!-- AdminLTE App -->
-    <script src="dist/js/app.min.js" type="text/javascript"></script>
-    <!-- AdminLTE for demo purposes -->
-    <script src="dist/js/demo.js" type="text/javascript"></script>
    <script>
 	function validat()
 	{
@@ -381,6 +343,3 @@ There must be a 04 (four) feet clear open space from the poperty line of the bui
 	
 	}
 	</script>
-	  <?php
-     //include"lib/footer.php";
-	 ?>

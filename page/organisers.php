@@ -141,29 +141,11 @@ function pop_up(id){
 <div class="content-wrapper">
         <!-- Content Header (Page header) -->
         <section class="content-header">
-          <h1>
-           Application Submission
-            <small></small>
-          </h1>
-		  <div style="margin-left:height:70px; background-color:#9ECFCF; text-align:center" class="video-field-new"> <?php if($_REQUEST[edit]=='successfull') { echo "<b style='color:green;padding:10px'>Data Successfully Updated.</b>"; } ?></div>
-				  
-				  
-				  <div style="margin-left:height:70px; background-color:#9ECFCF; text-align:center"> <?php if($_REQUEST[edit]=='fail') { echo "<b style='color:red;padding:10px'>Error in Data Updation.</b>"; } ?></div>
-				  
-				  <div style="margin-left:height:70px; background-color:#9ECFCF; text-align:center" class="video-field-new"> <?php if($_REQUEST[delete]=='successfull') { echo "<b style='color:green;padding:10px'>Data Successfully Deleted.</b>"; } ?></div>
-				  
-				  
-				  <div style="margin-left:height:70px; background-color:#9ECFCF; text-align:center"> <?php if($_REQUEST[delete]=='fail') { echo "<b style='color:red;padding:10px'>Error in Data Deletion.</b>"; } ?></div> 
-				  
-		 <ol class="breadcrumb">
-            <li><a href="indexes.php?action=dashboard"><i class="fa fa-dashboard"></i> Dashboard</a></li>
-           <li><a href="indexes.php?action=changespass"><i class="active"></i> Change Password</a></li>
-			
-			<li class="active"> <a href="logout.php">Logout</a></li>
-			<li class="active"> </li>
-			<li class="active"> </li>
-          </ol> 		  
-          
+            <h1>Application for permission to hold <?php echo PUJA_NAME;?></h1>
+		    <div style="margin-left:height:70px; background-color:#9ECFCF; text-align:center" class="video-field-new"> <?php if($_REQUEST[edit]=='successfull') { echo "<b style='color:green;padding:10px'>Data Successfully Updated.</b>"; } ?></div>
+            <div style="margin-left:height:70px; background-color:#9ECFCF; text-align:center"> <?php if($_REQUEST[edit]=='fail') { echo "<b style='color:red;padding:10px'>Error in Data Updation.</b>"; } ?></div>
+            <div style="margin-left:height:70px; background-color:#9ECFCF; text-align:center" class="video-field-new"> <?php if($_REQUEST[delete]=='successfull') { echo "<b style='color:green;padding:10px'>Data Successfully Deleted.</b>"; } ?></div>
+            <div style="margin-left:height:70px; background-color:#9ECFCF; text-align:center"> <?php if($_REQUEST[delete]=='fail') { echo "<b style='color:red;padding:10px'>Error in Data Deletion.</b>"; } ?></div> 
         </section>
 
         <!-- Main content -->
@@ -171,46 +153,16 @@ function pop_up(id){
           <div class="row">
             <div class="col-xs-12">
               <!-- /.box -->
-<div id="overlay_form" style="display:none;z-index:9999999">
- </div>
-              <div class="box">
-                <div class="box-header">
-                  <h3 class="box-title"></h3>
-                </div><!-- /.box-header -->
-                <div class="box-body">
-				
-                  
-					
-				
-
-
-	
-
-	
- 
- 	<div>
-	<?php
-					
-					$checkrec=$ob->get_rec("application","*","user_id='".$_SESSION['id']."' AND ps='".$_SESSION['ps']."'");
-//$checkUser=cek($user,$pass);	
-
-/*if($checkrec){ 
-$checkrecords=$ob->get_rec("application","*","user_id='".$_SESSION['id']."' AND ps='".$_SESSION['ps']."'");
-
-
-}*/
-
-
-
-?>
-		<?php include"lib/menu_horizontal.php"; ?>
-		
-				
-						
-					
-				<div class="content">
-				 
-					<section id="section-1">
+                <div id="overlay_form" style="display:none;z-index:9999999"></div>
+                <div class="box">
+                    <div class="box-header">
+                        <h3 class="box-title"></h3>
+                    </div><!-- /.box-header -->
+                    <div class="box-body">
+	                    <?php $checkrec=$ob->get_rec("application","*","user_id='".$_SESSION['id']."' AND ps='".$_SESSION['ps']."'"); ?>
+		                <?php include"lib/menu_horizontal.php"; ?>
+        				<div class="content">
+					    <section id="section-1">
 					
 						<div class="mediabox" style="width:730px">
 							<form method="post" action="fun/org.php">
@@ -229,12 +181,12 @@ $checkrecords=$ob->get_rec("application","*","user_id='".$_SESSION['id']."' AND 
 						 
 						 <tr height="40" ><td style="background-color:rgba(51, 122, 183, 0.26)">Mobile No.</td><td  style="background-color:rgba(51, 122, 183, 0.26)"><input  type="text"  id="orgmob" class="form-control" width="width:20px" 
 						
-						 name="orgmob"  style="width:200px"   <?php if($checkrec){ ?>   value="<?php echo $checkrec->org_mobile; ?>"<?php }    else { ?>   value="<?php echo $_SESSION['mobile_no']; ?>"<?php }  ?>   /> </td><td></td>
+						 name="orgmob"  style="width:200px"   <?php if($checkrec){ ?>   value="<?php echo $checkrec->org_mobile; ?>"<?php }    else { ?>   value="<?php echo $_SESSION['mobile_no']; ?>"<?php }  ?>  maxlength="10" /> </td><td></td>
 						 
 						 
 						 <td style="background-color:#EEEEDD"> <b style="color:#FF0000">*</b> Secretary Mobile No. </td><td style="background-color:#EEEEDD"><input  type="text"  id="secmob" class="form-control" width="width:20px" 
 						
-						 name="secmob"   size="20"  style="width:200px"   <?php if($checkrec){ ?>   value="<?php echo $checkrec->sec_mobile; ?>"<?php }  ?> /> </td>
+						 name="secmob"   size="20"  style="width:200px"   <?php if($checkrec){ ?>   value="<?php echo $checkrec->sec_mobile; ?>"<?php }  ?>  maxlength="10" /> </td>
 						 </tr>
 						
 						
@@ -304,7 +256,7 @@ $checkrecords=$ob->get_rec("application","*","user_id='".$_SESSION['id']."' AND 
 						
 						 <?php if($checkrec){ ?>  <input  type="hidden"  
 						
-						 name="nid"     value="<?php echo $checkrec->id; ?>"  <?php }  ?> />
+						 name="nid"     value="<?php echo $checkrec->id; ?>" /><?php }  ?>
 						<tr height="40"><td colspan="6" align="center">
 						
 						<!--<button style="height:40px" class="button" style="vertical-align:top"><span style="">Hover </span></button>
@@ -356,45 +308,10 @@ $checkrecords=$ob->get_rec("application","*","user_id='".$_SESSION['id']."' AND 
             </div><!-- /.col -->
           </div><!-- /.row -->
         </section><!-- /.content -->
+    <?php include "lib/footer.php"; ?>
       </div>
 	  
-	   <footer class="main-footer">
-        <div class="pull-right hidden-xs">
-           <img src="logo.png"  style="margin-top:-7px">
-        </div>
-        <strong>Copyright &copy; 2016<a href=""> NIC</a>.</strong> All rights reserved.
-      </footer>
     </div><!-- ./wrapper -->
-
-    <!-- jQuery 2.1.3 -->
-    <script src="plugins/jQuery/jQuery-2.1.3.min.js"></script>
-    <!-- Bootstrap 3.3.2 JS -->
-    <script src="bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
-    <!-- DATA TABES SCRIPT -->
-    <script src="plugins/datatables/jquery.dataTables.js" type="text/javascript"></script>
-    <script src="plugins/datatables/dataTables.bootstrap.js" type="text/javascript"></script>
-    <!-- SlimScroll -->
-    <script src="plugins/slimScroll/jquery.slimscroll.min.js" type="text/javascript"></script>
-    <!-- FastClick -->
-    <script src='plugins/fastclick/fastclick.min.js'></script>
-    <!-- AdminLTE App -->
-    <script src="dist/js/app.min.js" type="text/javascript"></script>
-    <!-- AdminLTE for demo purposes -->
-    <script src="dist/js/demo.js" type="text/javascript"></script>
-    <!-- page script -->
-  <!--<script type="text/javascript">
-      $(function () {
-        $("#example1").dataTable();
-        $('#example2').dataTable({
-          "bPaginate": false,
-          "bLengthChange": false,
-          "bFilter": false,
-          "bSort": true,
-          "bInfo": true,
-          "bAutoWidth": false
-        });
-      });
-    </script>-->
 	<script>
 	
 	function validat()
@@ -572,6 +489,3 @@ $checkrecords=$ob->get_rec("application","*","user_id='".$_SESSION['id']."' AND 
 	top:1px;
 }
 </style>
-	  <?php
-     //include"lib/footer.php";
-	 ?>

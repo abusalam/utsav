@@ -24,7 +24,7 @@ $exp=explode('/',$_FILES['file_res_copy']['type']);
 echo $fsize=$_FILES['file_res_copy']['size'].'<br>';
  //echo $fsize=$_FILES['file_res_copy']['size']/1000000;
 
-if(($exp[1]=='pdf') || ($exp[1]=='jpeg') || ($exp[1]=='png')) 
+if(($exp[1]=='pdf') || ($exp[1]=='jpeg') || ($exp[1]=='jpg') || ($exp[1]=='png')) 
 {
 
 $root1=$_SESSION['id'].'_'.rand(111,999).$_FILES['file_res_copy']['name'];

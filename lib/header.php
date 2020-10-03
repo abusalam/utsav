@@ -1,18 +1,7 @@
 <?php
-session_start();
-error_reporting(0);
-
 include_once("config/config.php");
 include_once("config/database.php");
-
-
-
 $ob= new database();
-//include_once("../config/fun.php");
- $usrs=$_SESSION['user'];
-//$checkUser=ftch_block($usrs);	
-$checkUser=$ob->get_rec("block_muni","*","usercode='".$usrs."'");	
-$_SESSION['bname']=$checkUser->blockmuni;
 ?>
 <!DOCTYPE html>
 <html>
@@ -84,44 +73,6 @@ $_SESSION['bname']=$checkUser->blockmuni;
 			
 			<?php } elseif(($_SESSION[cat]=='') && ($_SESSION[org_club]!='admin')) { echo $_SESSION['org_club'] ; ?>
 			<?php  } ?>
-          </a><span style="margin-left:64%; cursor:pointer; margin-top:20px" onClick="myFunction()"><img src="dist/img/view_refresh.png" width=25  title="Reload Page" style="margin-top:10px"></span>
-		  <script>
-function myFunction() {
-    location.reload();
-}
-</script>
-          <div class="navbar-custom-menu">
-            <ul class="nav navbar-nav">
-             
-              
-              <!-- User Account: style can be found in dropdown.less -->
-              <li class="dropdown user user-menu">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                  <img src="dist/img/user2-160x160.jpg" class="user-image" alt="User Image"/>
-                  <span class="hidden-xs"><?php echo $_SESSION['userid'];?></span>
-                </a>
-                <ul class="dropdown-menu">
-                  <!-- User image -->
-                  <li class="user-header">
-                    <img src="dist/img/user21-160x160.jpg" class="img-circle" alt="User Image" />
-                    <p>
-                     <?php echo $_SESSION['userid'];?>
-                      <small><?php echo $checkUser->blockmuni ; ?></small>
-                    </p>
-                  </li>
-                 
-                  <!-- Menu Footer-->
-                  <li class="user-footer">
-                    <div class="pull-left">
-                      <a href="#" class="btn btn-default btn-flat">Profile</a>
-                    </div>
-                    <div class="pull-right">
-                      <a href="logout.php" class="btn btn-default btn-flat">Sign out</a>
-                    </div>
-                  </li>
-                </ul>
-              </li>
-            </ul>
-          </div>
+          </a>
         </nav>
       </header>

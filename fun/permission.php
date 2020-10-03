@@ -24,21 +24,10 @@ for($i=1;$i<=$_REQUEST['loop'];$i++) {
 	} else {
 		if($_REQUEST[p.$i]!='') {
 			$mob_no=$_REQUEST[mob_no.$i];
-			$Message='Your application is pass from '.$_SESSION['cat']." Department";
+			$Message='Your application has been disposed by '.$_SESSION['cat']." Department";
 			include_once("sms/smsgw_cdac.php");
 			sendSingleSMS($username,$encryp_password,$senderid,$Message,$mob_no,$deptSecureKey);
 		}		
 	}
-//	$checkdata=$ob->get_rec("application","*","`id`='".$_REQUEST[nid.$i]."' ");
-//	if($checkdata) {
-//		if(($checkdata->elec_per!='') && ($checkdata->fir_per!='') && ($checkdata->polution_per!='')) {
-//			if($sendsms=='2') {
-//				$mob_no='9434105550';	
-//				$Message='Some Application passed in the lower tier and become pending for approval from your department.';	
-//				include_once("sms/smsgw_cdac.php");
-//				sendSingleSMS($username,$encryp_password,$senderid,$Message,$mob_no,$deptSecureKey);
-//			}
-//		}
-//	}
 }
 echo '<script type="text/javascript" language="javascript">window.location="../indexes.php?action=pendingapp";</script>';

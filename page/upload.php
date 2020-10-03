@@ -141,101 +141,54 @@ function pop_up(id){
 <div class="content-wrapper">
         <!-- Content Header (Page header) -->
         <section class="content-header">
-          <h1>
-           Application Submission
-            <small></small>
-          </h1>
+          <h1>Application for permission to hold <?php echo PUJA_NAME;?></h1>
 		  <div style="margin-left:height:70px; background-color:#9ECFCF; text-align:center" class="video-field-new"> <?php if($_REQUEST[edit]=='successfull') { echo "<b style='color:green;padding:10px'>Data Successfully Updated.</b>"; } ?></div>
-				  
-				  
-				 
-				  
-				  <div style="margin-left:height:70px; background-color:#9ECFCF; text-align:center" class="video-field-new"> <?php if($_REQUEST[delete]=='successfull') { echo "<b style='color:green;padding:10px'>Data Successfully Deleted.</b>"; } ?></div>
-				  
-				  
-				  <div style="margin-left:height:70px; background-color:#9ECFCF; text-align:center"> <?php if($_REQUEST[delete]=='fail') { echo "<b style='color:red;padding:10px'>Error in Data Deletion.</b>"; } ?></div> 
-				  
-		 <ol class="breadcrumb">
-            <li><a href="indexes.php?action=dashboard"><i class="fa fa-dashboard"></i> Dashboard</a></li>
-           <li><a href="indexes.php?action=changespass"><i class="active"></i> Change Password</a></li>
-			
-			<li class="active"> <a href="logout.php">Logout</a></li>
-			<li class="active"> </li>
-			<li class="active"> </li>
-          </ol> 		  
-          
+		  <div style="margin-left:height:70px; background-color:#9ECFCF; text-align:center" class="video-field-new"> <?php if($_REQUEST[delete]=='successfull') { echo "<b style='color:green;padding:10px'>Data Successfully Deleted.</b>"; } ?></div>
+		  <div style="margin-left:height:70px; background-color:#9ECFCF; text-align:center"> <?php if($_REQUEST[delete]=='fail') { echo "<b style='color:red;padding:10px'>Error in Data Deletion.</b>"; } ?></div>
         </section>
 
         <!-- Main content -->
         <section class="content">
           <div class="row">
             <div class="col-xs-12">
-              <!-- /.box -->
-<div id="overlay_form" style="display:none;z-index:9999999">
- </div>
-              <div class="box">
-                <div class="box-header">
-                  <h3 class="box-title"></h3>
-                </div><!-- /.box-header -->
-                <div class="box-body">
-				
-                  
-					
-				
-
-
-	
-
-	
- 
- 	<div>
-				
-						<?php include"lib/menu_horizontal.php"; ?>
-				<div class="content">
-				 
+                <!-- /.box -->
+                <div id="overlay_form" style="display:none;z-index:9999999"></div>
+                <div class="box">
+                    <div class="box-header">
+                        <h3 class="box-title"></h3>
+                    </div><!-- /.box-header -->
+                    <div class="box-body">
+ 	                <div>
+ 	                    <?php include"lib/menu_horizontal.php"; ?>
+				        <div class="content">
 					<section id="section-8">
-						<?php
-					
-					$checkrec=$ob->get_rec("application","*","user_id='".$_SESSION['id']."' AND ps='".$_SESSION['ps']."'");
-//$checkUser=cek($user,$pass);	
-
-/*if($checkrec){ 
-$checkrecords=$ob->get_rec("application","*","user_id='".$_SESSION['id']."' AND ps='".$_SESSION['ps']."'");
-
-
-}*/
-
-
-
-?>
+						<?php $checkrec=$ob->get_rec("application","*","user_id='".$_SESSION['id']."' AND ps='".$_SESSION['ps']."'"); ?>
 						<div class="mediabox" style="width:700px">
 							<form method="post" action="fun/upload.php" enctype="multipart/form-data">
 							<table style="padding-bottom:60px">
-							
-							<tr height="50"><td width="300" style="color:#FF0000"><b style="color:#FF0000">*</b> All files must be (.pdf|.jpg|.png) type each of Maximum 1MB.
-							
-			
-							 </td><td> <div style="margin-left:height:70px; background-color:#9ECFCF; text-align:center"> <?php if($_REQUEST[msg]=='error') { echo "<b style='color:red;padding:10px'>Error in file upload, please try again.</b>"; } ?></div></td></tr>
-							
-							
-							 <tr height="50"  style="background-color:rgba(255, 235, 215, 0.56); padding:20px 10px 20px;">
-							     <td width="300" ><b style="color:#FF0000">*</b> Resolution of meeting for conducting puja <strong  style="color:#FF0000">(Max 1MB)</strong></td><td>
-<input  type="file"  id="file_res_copy" class="form-control" width="width:20px" 
-						
-						 name="file_res_copy"   size="200"    />
-						 
-						 <input  type="hidden"  id="file_res_copy_old" class="form-control" width="width:20px" 
-						
-						 name="file_res_copy_old"   size="200"  value="<?php echo $checkrec->file_res_copy; ?>"   />
-						 
-						 </td><td><?php if($checkrec){ ?>   <?php echo $checkrec->file_res_copy; ?><?php }  ?> </td>
-						 
-						 </tr>
+							    <tr height="50">
+							        <td width="300" style="color:#FF0000"><b style="color:#FF0000">*</b> Note: All files must be (.pdf|.jpg|.png) type each of Maximum 1MB.</td>
+							        <td>
+							            <div style="margin-left:height:70px; background-color:#9ECFCF; text-align:center">
+							                <?php if($_REQUEST[msg]=='error') { echo "<b style='color:red;padding:10px'>Error in file upload, please try again.</b>"; } ?>
+						                </div>
+					                </td>
+				                </tr>
+							    <tr height="50"  style="background-color:rgba(255, 235, 215, 0.56); padding:20px 10px 20px;">
+							        <td width="300" ><b style="color:#FF0000">*</b> Resolution of meeting for conducting puja <strong  style="color:#FF0000">(Max 1MB)</strong></td>
+							        <td>
+							            <input  type="file"  id="file_res_copy" class="form-control" width="width:20px" name="file_res_copy" size="200" />
+							            <input  type="hidden"  id="file_res_copy_old" class="form-control" width="width:20px" name="file_res_copy_old" size="200" value="<?=$checkrec->file_res_copy?>"/>
+					                </td>
+					                <td><?php if($checkrec){ echo $checkrec->file_res_copy; } ?></td>
+				                </tr>
 						 
 						 
 						 
 						 <tr height="50" style="background-color:#EEEEDD">
-						     <td><b style="color:#FF0000">*</b> Member Details with phone No. <strong  style="color:#FF0000">(Max 1MB)</strong></td><td><input  type="file"  id="file_mem_det" class="form-control" width="width:20px" 
+						     <td><b style="color:#FF0000">*</b> Member Details with phone No. <strong  style="color:#FF0000">(Max 1MB)</strong></td>
+						     <td>
+						         <input  type="file"  id="file_mem_det" class="form-control" width="width:20px" 
 						
 						 name="file_mem_det"    />
 						 
@@ -320,7 +273,7 @@ $checkrecords=$ob->get_rec("application","*","user_id='".$_SESSION['id']."' AND 
 						 name="submit"  <?php if($checkrec->finalize=='Yes'){ ?> disabled="disabled"   <?php } ?>     value="Save & Next"  class="myButton" /> </td>
 						 <?php if($checkrec){ ?>  <input  type="hidden"  
 						
-						 name="nid"     value="<?php echo $checkrec->id; ?>"  <?php }  ?> /> 
+						 name="nid"     value="<?php echo $checkrec->id; ?>" /><?php } ?> 
 						 </tr>	
 						 
 						 </table>
@@ -352,43 +305,5 @@ $checkrecords=$ob->get_rec("application","*","user_id='".$_SESSION['id']."' AND 
         </section><!-- /.content -->
       </div>
 	  
-	   <footer class="main-footer">
-        <div class="pull-right hidden-xs">
-           <img src="logo.png"  style="margin-top:-7px">
-        </div>
-        <strong>Copyright &copy; 2016<a href=""> NIC</a>.</strong> All rights reserved.
-      </footer>
+<?php include"lib/footer.php";?>
     </div><!-- ./wrapper -->
-
-    <!-- jQuery 2.1.3 -->
-    <script src="plugins/jQuery/jQuery-2.1.3.min.js"></script>
-    <!-- Bootstrap 3.3.2 JS -->
-    <script src="bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
-    <!-- DATA TABES SCRIPT -->
-    <script src="plugins/datatables/jquery.dataTables.js" type="text/javascript"></script>
-    <script src="plugins/datatables/dataTables.bootstrap.js" type="text/javascript"></script>
-    <!-- SlimScroll -->
-    <script src="plugins/slimScroll/jquery.slimscroll.min.js" type="text/javascript"></script>
-    <!-- FastClick -->
-    <script src='plugins/fastclick/fastclick.min.js'></script>
-    <!-- AdminLTE App -->
-    <script src="dist/js/app.min.js" type="text/javascript"></script>
-    <!-- AdminLTE for demo purposes -->
-    <script src="dist/js/demo.js" type="text/javascript"></script>
-    <!-- page script -->
-  <!--<script type="text/javascript">
-      $(function () {
-        $("#example1").dataTable();
-        $('#example2').dataTable({
-          "bPaginate": false,
-          "bLengthChange": false,
-          "bFilter": false,
-          "bSort": true,
-          "bInfo": true,
-          "bAutoWidth": false
-        });
-      });
-    </script>-->
-	  <?php
-     //include"lib/footer.php";
-	 ?>

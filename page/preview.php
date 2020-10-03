@@ -64,10 +64,7 @@ $checkrecords=$ob->get_rec("application","*","user_id='".$_SESSION['id']."' AND 
 
 ?>
 						<div class="mediabox" style="width:960px" align="center">
-							<table>
-							<tr>
-							 <td>Preview of the Application</td></tr>
-							</table>
+<h1>Preview of the Application for permission to hold <?php echo PUJA_NAME;?></h1>
 							
 							<table border="1" style="width:100%" align="center">
 							<tr>

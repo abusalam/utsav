@@ -1,5 +1,5 @@
 <?php 
-
+include_once("config/config.php");
 
 
 	if($_REQUEST['action']=='dashboard'){
@@ -14,39 +14,7 @@
 	if($_REQUEST['action']=='app'){
 		include("page/app.php");
 	}
-	if($_REQUEST['action']=='land'){
-		include("page/land.php");
-	}
-	if($_REQUEST['action']=='power'){
-		include("page/power.php");
-	}
 	
-	if($_REQUEST['action']=='fire'){
-		include("page/fire.php");
-	}
-	if($_REQUEST['action']=='pollution'){
-		include("page/pollution.php");
-	}
-	if($_REQUEST['action']=='organisers'){
-		include("page/organisers.php");
-	}
-	
-	if($_REQUEST['action']=='municipality'){
-		include("page/municipality.php");
-	}
-	
-	if($_REQUEST['action']=='police'){
-		include("page/police.php");
-	}
-	if($_REQUEST['action']=='upload'){
-		include("page/upload.php");
-	}
-	if($_REQUEST['action']=='checklist'){
-		include("page/checklist.php");
-	}
-	if($_REQUEST['action']=='finalize'){
-		include("page/finalize.php");
-	}
 	if($_REQUEST['action']=='pendingapp'){
 		include("page/pendingapp.php");
 	}
@@ -61,9 +29,7 @@
 		include("page/actionadminreport2day.php");
 	}
 	
-	if($_REQUEST['action']=='preview'){
-		include("page/preview.php");
-	}
+
 	
 	if($_REQUEST['action']=='permissionpending'){
 		include("page/permissionpending.php");
@@ -423,6 +389,78 @@
 		include("page/pers_preview.php");
 		
 	}
+	if($_REQUEST['action']=='preview'){
+		include("page/preview.php");
+	}
 	
-	
+    if($_REQUEST['action']=='organisers') {
+        if (strtotime(CLOSING_DATE)>time()) {
+		    include("page/organisers.php");
+        } else {
+	        include("page/closed.php");
+        }
+	}
+    if($_REQUEST['action']=='land') {
+        if (strtotime(CLOSING_DATE)>time()) {
+		    include("page/land.php");
+        } else {
+	        include("page/closed.php");
+        }
+    }
+	if($_REQUEST['action']=='power'){
+		if (strtotime(CLOSING_DATE)>time()) {
+		    include("page/power.php");
+        } else {
+	        include("page/closed.php");
+        }
+	}
+	if($_REQUEST['action']=='fire'){
+		if (strtotime(CLOSING_DATE)>time()) {
+		    include("page/fire.php");
+        } else {
+	        include("page/closed.php");
+        }
+	}
+	if($_REQUEST['action']=='pollution'){
+		if (strtotime(CLOSING_DATE)>time()) {
+		    include("page/pollution.php");
+        } else {
+	        include("page/closed.php");
+        }
+	}
+	if($_REQUEST['action']=='municipality'){
+		if (strtotime(CLOSING_DATE)>time()) {
+		    include("page/municipality.php");
+        } else {
+	        include("page/closed.php");
+        }
+	}
+	if($_REQUEST['action']=='police'){
+		if (strtotime(CLOSING_DATE)>time()) {
+		    include("page/police.php");
+        } else {
+	        include("page/closed.php");
+        }
+	}
+	if($_REQUEST['action']=='upload'){
+		if (strtotime(CLOSING_DATE)>time()) {
+		    include("page/upload.php");
+        } else {
+	        include("page/closed.php");
+        }
+	}
+	if($_REQUEST['action']=='checklist'){
+		if (strtotime(CLOSING_DATE)>time()) {
+		    include("page/checklist.php");
+        } else {
+	        include("page/closed.php");
+        }
+	}
+	if($_REQUEST['action']=='finalize'){
+		if (strtotime(CLOSING_DATE)>time()) {
+		    include("page/finalize.php");
+        } else {
+	        include("page/closed.php");
+        }
+	}
 ?>

@@ -1,12 +1,9 @@
- <footer class="main-footer">
-        <div class="pull-right hidden-xs">
-          <img src="logo.png"  style="margin-top:-7px">
-        </div>
-        <strong>Copyright &copy; 2016 &nbsp; <a href=""> &nbsp; NIC</a>.</strong> All rights reserved.
-      </footer>
-    </div><!-- ./wrapper -->
-
-    
+<footer class="main-footer">
+    <div class="pull-right hidden-xs">
+        <img src="logo.png"  style="margin-top:-7px">
+    </div>
+    <strong>Copyright &copy; <?=date('Y')?> <a href=""> &nbsp; NIC</a>.</strong> All rights reserved.
+</footer>
     <script src="plugins/jQuery/jQuery-2.1.3.min.js"></script>
   
     <script src="http://code.jquery.com/ui/1.11.2/jquery-ui.min.js" type="text/javascript"></script>

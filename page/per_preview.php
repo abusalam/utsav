@@ -141,29 +141,10 @@ function pop_up(id){
 <div class="content-wrapper">
         <!-- Content Header (Page header) -->
         <section class="content-header">
-          <h1>
-           Application Submission
-            <small></small>
-          </h1>
+          <h1>Application for permission to hold <?php echo PUJA_NAME;?></h1>
 		  <div style="margin-left:height:70px; background-color:#9ECFCF; text-align:center" class="video-field-new"> <?php if($_REQUEST[edit]=='successfull') { echo "<b style='color:green;padding:10px'>Data Successfully Updated.</b>"; } ?></div>
-				  
-				  
-				 
-				  
-				  <div style="margin-left:height:70px; background-color:#9ECFCF; text-align:center" class="video-field-new"> <?php if($_REQUEST[delete]=='successfull') { echo "<b style='color:green;padding:10px'>Data Successfully Deleted.</b>"; } ?></div>
-				  
-				  
-				  <div style="margin-left:height:70px; background-color:#9ECFCF; text-align:center"> <?php if($_REQUEST[delete]=='fail') { echo "<b style='color:red;padding:10px'>Error in Data Deletion.</b>"; } ?></div> 
-				  
-		 <ol class="breadcrumb">
-            <li><a href="indexes.php?action=dashboard"><i class="fa fa-dashboard"></i> Dashboard</a></li>
-           <li><a href="indexes.php?action=changespass"><i class="active"></i> Change Password</a></li>
-			
-			<li class="active"> <a href="logout.php">Logout</a></li>
-			<li class="active"> </li>
-			<li class="active"> </li>
-          </ol> 		  
-          
+		  <div style="margin-left:height:70px; background-color:#9ECFCF; text-align:center" class="video-field-new"> <?php if($_REQUEST[delete]=='successfull') { echo "<b style='color:green;padding:10px'>Data Successfully Deleted.</b>"; } ?></div>
+          <div style="margin-left:height:70px; background-color:#9ECFCF; text-align:center"> <?php if($_REQUEST[delete]=='fail') { echo "<b style='color:red;padding:10px'>Error in Data Deletion.</b>"; } ?></div> 
         </section>
 
         <!-- Main content -->
@@ -194,22 +175,8 @@ function pop_up(id){
 				<div class="content">
 				 
 					<section id="section-8">
-						<?php
-					
-					//$checkrec=$ob->get_rec("application","*","user_id='".$_SESSION['id']."' AND ps='".$_SESSION['ps']."'");
-//$checkUser=cek($user,$pass);	
-
-/*if($checkrec){ 
-$checkrecords=$ob->get_rec("application","*","user_id='".$_SESSION['id']."' AND ps='".$_SESSION['ps']."'");
-
-
-}*/
-
-$dataset=$ob->get_rec("application","*","id='".$_REQUEST[id]."'","");
-
-?>
+						<?php $dataset=$ob->get_rec("application","*","id='".$_REQUEST[id]."'","");?>
 						<div class="mediabox" style="width:700px">
-							<form method="post" action="fun/upload.php" enctype="multipart/form-data">
 							<table style="padding-bottom:60px">
 							
 							
@@ -239,84 +206,72 @@ $dataset=$ob->get_rec("application","*","id='".$_REQUEST[id]."'","");
 						 </tr>	
 							
 							 <tr height="50"  style="background-color:rgba(255, 235, 215, 0.56); padding:20px 10px 20px;"><td width="300" ><b style="color:#FF0000">*</b> WBSEDCL (7449302653)</td><td>
-<?php if($dataset->elec_per!='')
-							 {  echo "<label style='color:#006600'>Permitted on $dataset->elec_per_date</label>" ;?>
-							 
+<?php
 
+if($dataset->elec_per=='Yes') {
+    echo "<label style='color:#006600'>Permitted on $dataset->elec_per_date</label>" ;
+} else if($dataset->elec_per=='No') {
+    echo "<label style='color:#FF0000'>Rejected on $dataset->elec_per_date</label>" ; 
+} else {
+    echo '<label style="color:#0000FF">Pending </label>';
+}
 
-<?php } else  { ?>
-<label style="color:#FF0000">Pending </label>
-<?php }  ?></td>
-						 
-						 </tr>
-						 
-						 
-						 
-						 <tr height="50" style="background-color:#EEEEDD"><td><b style="color:#FF0000">*</b> Fire Department (03512-278854)</td><td><?php if($dataset->fir_per!='')
-							 {  echo "<label style='color:#006600'>Permitted on $dataset->fir_per_date</label>" ;?>
-							 
+?>
+</td></tr>
+<tr height="50" style="background-color:#EEEEDD"><td><b style="color:#FF0000">*</b> Fire Department (03512-278854)</td><td>
+<?php 
 
+if($dataset->fir_per=='Yes') {
+    echo "<label style='color:#006600'>Permitted on $dataset->fir_per_date</label>" ;
+} else if($dataset->elec_per=='No') {
+    echo "<label style='color:#FF0000'>Rejected on $dataset->fir_per_date</label>" ; 
+} else {
+    echo '<label style="color:#0000FF">Pending </label>';
+}  
 
-<?php } else  { ?>
-<label style="color:#FF0000">Pending </label>
-<?php }  ?>
-						  </td>
-						 </tr>
-						 
-						 
-						 <tr height="50"  style="background-color:rgba(255, 235, 215, 0.56); padding:20px 10px 20px;"><td><b style="color:#FF0000">*</b> Pollution Department</td><td><?php if($dataset->polution_per!='')
-							 {  echo "<label style='color:#006600'>Permitted on $dataset->polution_per_date</label>" ;?>
-							 
+?>
+</td></tr>
+<tr height="50"  style="background-color:rgba(255, 235, 215, 0.56); padding:20px 10px 20px;"><td><b style="color:#FF0000">*</b> Pollution Department</td><td>
+<?php
 
+if($dataset->polution_per=='Yes') {
+    echo "<label style='color:#006600'>Permitted on $dataset->polution_per_date</label>";
+} else if($dataset->polution_per=='No') {
+    echo "<label style='color:#FF0000'>Rejected on $dataset->polution_per_date</label>" ; 
+} else  {
+    echo '<label style="color:#0000FF">Pending </label>';
+}  
+?>
+</td></tr>
+<tr height="50" style="background-color:#EEEEDD"><td><b style="color:#FF0000">*</b> Municipality (EBM:03512252324/9434120207/9434186130 OMM:03512-260235/9476375079)</td><td>
+<?php
 
-<?php } else  { ?>
-<label style="color:#FF0000">Pending </label>
-<?php }  ?></td>
-						 </tr>
-						
-						 <tr height="50" style="background-color:#EEEEDD"><td><b style="color:#FF0000">*</b> Minucipality (EBM:03512252324/9434120207/9434186130 OMM:03512-260235/9476375079)</td><td><?php if($dataset->muni_per!='')
-							 {  echo "<label style='color:#006600'>Permitted on $dataset->muni_per_date</label>" ;?>
-							 
+if($dataset->muni_per=='Yes'){
+    echo "<label style='color:#006600'>Permitted on $dataset->muni_per_date</label>" ;
+} else if($dataset->muni_per=='No') {
+    echo "<label style='color:#FF0000'>Rejected on $dataset->muni_per_date</label>" ; 
+} else {
+    echo '<label style="color:#0000FF">Pending </label>';
+}
 
+?>
+</td></tr>  
+<tr height="50"  style="background-color:rgba(255, 235, 215, 0.56); padding:20px 10px 20px;"><td><b style="color:#FF0000">*</b> Police Department</td><td>
+<?php
 
-<?php } else  { ?>
-<label style="color:#FF0000">Pending </label>
-<?php }  ?></td>
-						 </tr>  
-						 
-						
-						<tr height="50"  style="background-color:rgba(255, 235, 215, 0.56); padding:20px 10px 20px;"><td><b style="color:#FF0000">*</b> Police Department
+if($dataset->police_per=='Yes') {
+    echo "<label style='color:#006600'>Permitted on $dataset->police_per_date</label>" ;
+} else if($dataset->police_per=='No') {
+    echo "<label style='color:#FF0000'>Rejected on $dataset->police_per_date</label>" ; 
+} else {
+    echo '<label style="color:#0000FF">Pending </label>'; 
+}
 
-</td><td><?php if($dataset->police_per!='')
-							 {  echo "<label style='color:#006600'>Permitted on $dataset->police_per_date</label>" ;?>
-							 
+?>
+</td></tr>
+</table>
 
-
-<?php } else  { ?>
-<label style="color:#FF0000">Pending </label>
-<?php }  ?></td>
-						 </tr>
-						
-						 
-						 
-						 
-						 
-						 
-						 
-						 
-						  
-						  
-						  
-						  
-						  
-						 
-						
-						 
-						 </table>
-							
-							</form>
-						
-						</div>
+</div>
 					</section>
 					
 					
@@ -341,43 +296,5 @@ $dataset=$ob->get_rec("application","*","id='".$_REQUEST[id]."'","");
         </section><!-- /.content -->
       </div>
 	  
-	   <footer class="main-footer">
-        <div class="pull-right hidden-xs">
-           <img src="logo.png"  style="margin-top:-7px">
-        </div>
-        <strong>Copyright &copy; 2016<a href=""> NIC</a>.</strong> All rights reserved.
-      </footer>
+    <?php include"lib/footer.php"; ?>
     </div><!-- ./wrapper -->
-
-    <!-- jQuery 2.1.3 -->
-    <script src="plugins/jQuery/jQuery-2.1.3.min.js"></script>
-    <!-- Bootstrap 3.3.2 JS -->
-    <script src="bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
-    <!-- DATA TABES SCRIPT -->
-    <script src="plugins/datatables/jquery.dataTables.js" type="text/javascript"></script>
-    <script src="plugins/datatables/dataTables.bootstrap.js" type="text/javascript"></script>
-    <!-- SlimScroll -->
-    <script src="plugins/slimScroll/jquery.slimscroll.min.js" type="text/javascript"></script>
-    <!-- FastClick -->
-    <script src='plugins/fastclick/fastclick.min.js'></script>
-    <!-- AdminLTE App -->
-    <script src="dist/js/app.min.js" type="text/javascript"></script>
-    <!-- AdminLTE for demo purposes -->
-    <script src="dist/js/demo.js" type="text/javascript"></script>
-    <!-- page script -->
-  <!--<script type="text/javascript">
-      $(function () {
-        $("#example1").dataTable();
-        $('#example2').dataTable({
-          "bPaginate": false,
-          "bLengthChange": false,
-          "bFilter": false,
-          "bSort": true,
-          "bInfo": true,
-          "bAutoWidth": false
-        });
-      });
-    </script>-->
-	  <?php
-     //include"lib/footer.php";
-	 ?>

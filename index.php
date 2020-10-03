@@ -1,4 +1,16 @@
-<?php session_start(); ?>
+<?php
+if($_SERVER['HTTPS']!='on') {
+    $redirect= 'https://'.$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'];
+    header("Location:$redirect");
+    exit();
+}
+if ((strtotime(START_DATE)<time()) && (!isset($_REQUEST['dev']))) {
+    include "welcome.php";
+    exit();
+}
+session_start(); 
+
+?>
 <!DOCTYPE html>
 <html>
   <head>
@@ -65,11 +77,10 @@
   }
 </script>
 
-<script>
-    $(window).load(function(){
-        setTimeout(function(){ $('.video-field-new').fadeOut("very slow") }, 2000);
-    });
-</script>
+ <script>
+			   $(window).load(function(){
+  setTimeout(function(){ $('.video-field-new').fadeOut("very slow") }, 2000);
+});</script>
 <style>
 
 
@@ -125,179 +136,167 @@
 
   </head>
   
-  <?php 
-  //include"lib/check.php";
-  
-if(isset($_REQUEST['submitlogin'])) {
-    include_once("config/config.php");
-    include_once("config/database.php");
-    $ob= new database();
-    $user=$_REQUEST['user_id'];
-    $pass=$_REQUEST['password'];
-    $checkUser = $ob->get_rec("user_reg", "*", "`mobile`='".$user."' AND `pwd`='".$pass."'");
-
-    if($checkUser) {
-        $_SESSION['userid']=$checkUser->user_id;
-        $_SESSION['user']=$checkUser->code;
-        $_SESSION['cat']=$checkUser->category;
-        $_SESSION['ps']=$checkUser->ps;
-        $_SESSION['id']=$checkUser->id;
-        $_SESSION['mobile_no']=$checkUser->mobile;
-        $_SESSION['org_club']=$checkUser->org_club;
-        echo '<script type="text/javascript" language="javascript">window.location="indexes.php?action=dashboard";</script>';
-    } else {
-        echo '<script type="text/javascript" language="javascript">window.location="index.php?error=loginerror";</script>';
+  <?php
+    if(isset($_REQUEST['submitlogin'])) {
+        include_once("config/config.php");
+        include_once("config/database.php");
+        $ob= new database();
+        $user=$_REQUEST['user_id'];
+        $pass=$_REQUEST['password'];
+        $checkUser=$ob->get_rec("user_reg","*","`mobile`='".$user."' AND `pwd`='".$pass."'");
+    
+        if($checkUser) {
+            $_SESSION['userid']=$checkUser->user_id;
+            $_SESSION['user']=$checkUser->code;
+            $_SESSION['cat']=$checkUser->category;
+            $_SESSION['ps']=$checkUser->ps;
+            $_SESSION['id']=$checkUser->id;
+            $_SESSION['mobile_no']=$checkUser->mobile;
+            $_SESSION['org_club']=$checkUser->org_club;	 
+            echo '<script type="text/javascript" language="javascript">window.location="indexes.php?action=dashboard";</script>';
+        } else {
+        	echo '<script type="text/javascript" language="javascript">window.location="index.php?error=loginerror";</script>';
+        }
     }
-}
   ?>
-  <body class="login-page"  style="background-image:url(images/kashphool.jpg);background-repeat-x: no-repeat;
-background-repeat-y: no-repeat;  background-size:100% 100%;">
-    <div class="login-box" style="margin-left:160px ;">
-	
-      <!--<div class="login-logo" >
-       <b style="font-size:23px">  <img src="images/durg4.png" width="70" /></b>
-      </div>-->
-	  <div style='float:left'>
-      <div  class="login-box-body" style=" border-radius: 25px; width:970px; text-align:center">
-       
-       <b style="font-size:23px">  <img src="images/2198.thumb.gif" width="70" style="float:left" /></b>
-       <p class="login-box-msg"  ><div style="margin-top:-40px; font-family:French Script MT; font-size:40px; padding-bottom:1px">Aassan </div><div style="margin-top:-20px;"><label style="font-size:37px; margin-top:-20px" class="burning">U</label><label style="font-size:23px" class="burning">tility </label><label style="font-size:37px" class="burning"> &nbsp;T</label><label style="font-size:23px" class="burning">ool of </label><label style="font-size:37px" class="burning"> &nbsp;S</label><label style="font-size:23px" class="burning"> ingle <label style="font-size:23px" class="burning">window </label><label style="font-size:37px" class="burning">&nbsp;A</label>pplication<label style="font-size:23px" class="burning">  &nbsp;for </label> <label style="font-size:23px" class="burning">Puja</label> & <label style="font-size:37px" class="burning">V</label>erification  </label> <label style="font-size:37px" class="burning">( UTSAV )</label></div><br style="font-size:14px"></p>
-		
-		
-		<table>
-		
-		<tr> <td>
-		
-		 <div style='width:270px; float:left'>
-		 
-		 <div style="margin-top:-70px" class="video-field-new"><?php if($_REQUEST['report']=='successfull') { echo "<b style='color:green;padding:10px'>Your registration process is successfully completed!</b>"; } ?></div>
-		 <div style="margin-top:0px" ><b style='color:#CC0066;padding:10px'></b></div> 
-		 
-		 
-		 <div style="margin-top:-70px" class="video-field-new"><?php if($_REQUEST['error']=='loginerror') { echo "<b style='color:red;padding:10px'>Your User Id / Password is wrong. Please try again!</b>"; } ?></div>
-		 
-		 <div style="margin-top:70px" class="video-field-new"><?php if($_REQUEST['error']=='loginerror') { echo "<b style='color:red;padding:10px'></b>"; } ?></div>
-	<div style="margin-top:-70px" class="video-field-new"><?php if($_REQUEST['error']=='true') { echo "<b style='color:red;padding:10px'>Your mobile number is exist. Please register with another mobile number !</b>"; } ?></div>	
-        <form action="#" method="post" >
-		<div class="form-group has-feedback" style="text-align:center; font-weight:bold;color:#0066CC">
-            UTSAV Login
-           
-          </div>
-          <div class="form-group has-feedback">
-            <input type="text" class="form-control"  name="user_id" placeholder="User Id / Mobile No." id="user_id"/>
-           
-          </div>
-          <div class="form-group has-feedback">
-            <input type="password" class="form-control" name="password" placeholder="Password" id="password"/>
-         
-          </div>
-          <div class="row">
-            <div class="col-xs-8">    
-              <div class="checkbox icheck">
-                <label>
-                  <input type="checkbox"> Remember Me
-                </label>
-              </div>                        
+  <body class="login-page" style="background-image:url(images/kashphool.jpg);background-repeat-x: no-repeat; background-repeat-y: no-repeat;  background-size:100% 100%;">
+    <div class="login-box" style="width:auto;max-width:800px">
+        <div class="login-box-body" style="border-radius: 25px;">
+            <img src="images/2198.thumb.gif" width="70" style="float:left"/>
+            <div style="text-align:center">
+                <span style="font-size:30px" class="burning">U</span><span style="font-size:20px" class="burning">tility </span>
+                <span style="font-size:30px" class="burning">T</span><span style="font-size:20px" class="burning">ool of </span>
+                <span style="font-size:30px" class="burning">S</span><span style="font-size:20px" class="burning">ingle </span>
+                <span style="font-size:20px" class="burning">window </span>
+                <span style="font-size:30px" class="burning">A</span><span style="font-size:20px" class="burning">pplication </span>
+                <span style="font-size:20px" class="burning">for </span> 
+                <span style="font-size:20px" class="burning">Puja &amp; </span>  
+                <span style="font-size:30px" class="burning">V</span><span style="font-size:20px" class="burning">erification </span> 
+                <span style="font-size:30px" class="burning">(UTSAV)</span>
             </div>
-            <div class="col-xs-4">
-              <button type="submit" name="submitlogin" class="btn btn-primary btn-block btn-flat" style="border-radius: 5px" onClick="return login_check();">Log In</button>
+            <div class="row">
+                <?php
+                    if($_REQUEST['report']=='successfull') {
+                        echo '<div class="alert alert-success" role="alert">Your registration process is successfully completed!</div>';
+                    } 
+                ?>
+                <?php
+                    if($_REQUEST['error']=='loginerror') { 
+                        echo '<div class="alert alert-danger" role="alert">Your User Id / Password is wrong. Please try again!</div>';
+                    }
+                ?>
+                <?php
+                    if($_REQUEST['error']=='true') {
+                        echo '<div class="alert alert-warning" role="alert">Your mobile number is exist. Please register with another mobile number !</div>';
+                    }
+                ?>	
+                <div class="col-md-6">
+                    <form style="padding:20px;margin-bottom:20px;" action="#" method="post" >
+                        <div class="form-group row has-feedback">
+                            <span style="text-align:left; font-weight:bold;color:#0066CC">UTSAV Login</span>
+                        </div>
+                        <div class="form-group row has-feedback">
+                            <input type="text" class="form-control"  name="user_id" placeholder="User Id / Mobile No." id="user_id"/>
+                        </div>
+                        <div class="form-group row has-feedback">
+                            <input type="password" class="form-control" name="password" placeholder="Password" id="password"/>
+                        </div>
+                        <button type="submit" name="getApprovedList" class="btn btn-success" >List of Approved Puja Organizers</button>
+                        <button type="submit" name="submitlogin" class="btn btn-primary pull-right" onClick="return login_check();">Log In</button>
+                    </form>
+                </div>
+                <div class="col-md-6">
+                    <form style="padding:20px;margin-bottom:20px;" action="fun/reg_init.php" method="post">
+                        <div class="form-group row has-feedback">
+                            <span style="text-align:left; font-weight:bold;color:#0066CC">UTSAV Registration</span>
+                            <span class="pull-right"><b style="color:#FF0000" >*</b> mandatory fields</span>
+                        </div>
+                        <div class="form-group row has-feedback">
+                            <label for="ps"><b style="color:#FF0000">*</b>Police Station</label>
+                                   <select class="form-control" name="ps" id="ps">
+                                        <option disabled="disabled" selected="selected">Select PS</option>
+                                        <option value="BSN Baishnabnagar PS">Baishnabnagar PS</option>
+                                        <option value="BMG Bamongola PS">Bamongola PS</option>
+                                        <option value="BTN Bhutni PS">Bhutni PS</option>
+                                        <option value="CHL Chanchal PS">Chanchal PS</option>
+                                        <option value="EBP English Bazar PS">English Bazar PS</option>
+                                        <option value="GLE Gazole PS">Gazole PS</option>
+                                        <option value="HBP Habibpur PS">Habibpur PS</option>
+                                        <option value="HCP Harischandrapur PS">Harischandrapur PS</option>
+                                        <option value="KCK Kaliachak PS">Kaliachak PS</option>
+                                        <option value="MLD Malda PS">Malda PS</option>
+                                        <option value="MCK Manikchak PS">Manikchak PS</option>
+                                        <option value="MTB Mothabari PS">Mothabari PS</option>
+                                        <option value="PKR Pukhuria PS">Pukhuria PS</option>
+                                        <option value="RTA Ratua PS">Ratua PS</option>
+                                   </select>
+                        </div>
+                        <div class="form-group row has-feedback">
+                            <label for="org"><b style="color:#FF0000">*</b>Organisation / Club</label>
+                            <input type="text" class="form-control" id="org" name="org" placeholder="Organisation / Club"/>
+                        </div>
+                        <div class="form-group row has-feedback">
+                            <label for="emailid">Email Id</label>
+                            <input type="text" class="form-control" name="emailid" placeholder="Email Id"/>
+                        </div>
+                        <div class="form-group row has-feedback">
+                            <label for="mobile"><b style="color:#FF0000">*</b>Club Registered Mobile No.</label>
+                            <input type="text" class="form-control" id="mobile" name="mobile" placeholder="Club Registered Mobile No."/>
+                        </div>
+                        <button type="submit" name="submit" class="btn btn-primary pull-right" onClick="return validat();">Get OTP</button>
+                    </form>
+                </div>
             </div>
-          </div>
-        </form>
-		</div>
-		</td>
-		<td width="100px"  colspan="2"></td>
-		<td width="400px">
-		 <div style='width:270px; margin-left:-20px'>
-		<form action="fun/reg_init.php" method="post">
-		  <table style="width:700px">
-		  <tr>
-		  <td></td>
-		  <td>
-		<div class="form-group has-feedback" style="text-align:left; font-weight:bold; color:#0066CC">
-            UTSAV Registration    <a href="images/utsav.pdf" target="_blank" style="color:#000099; padding-left:100px"><img src="images/icon-pdf.png" width="27"> User Manual</a>
-           
-          </div>
-		  <div class="form-group has-feedback" style=" text-align: left">
-           <b style="color:#FF0000" >*</b> mandatory fields 
-           
-          </div>
-		  </td>
-		</tr>
-		  <tr> <td width="100px"><b style="color:#FF0000">*</b>Police Station</td><td><div class="form-group has-feedback" style="width:355px">
-           <select class="form-control" name="ps" id="ps">
-		   <option></option>
-		   <option value="English Bazar PS">English Bazar PS</option>
-		   <option value="Old Malda PS">Old Malda PS</option>
-		   
-		   </select>
-            <!--<span class="glyphicon glyphicon-envelope form-control-feedback"></span>-->
-          </div></td>
-		  
-		 </tr>
-		  
-		  <tr> <td width="100px"><b style="color:#FF0000">*</b>Organisation / Club</td><td><div class="form-group has-feedback" style="width:355px">
-            <input type="text" class="form-control"  id="org" name="org" placeholder="Organisation / Club"/>
-            <!--<span class="glyphicon glyphicon-envelope form-control-feedback"></span>-->
-          </div></td>
-		  
-		</tr><tr> <td width="100px">Email Id</td><td><div class="form-group has-feedback" style="width:355px">
-            <input type="text" class="form-control"   name="emailid" placeholder="Email Id"/>
-            <!--<span class="glyphicon glyphicon-envelope form-control-feedback"></span>-->
-          </div></td>
-		  
-		</tr>
-		<tr> <td width="200px"><b style="color:#FF0000">*</b>Club Registered Mobile No.</td><td><div class="form-group has-feedback" style="width:355px">
-            <input type="text" class="form-control"  id="mobile" name="mobile" placeholder="Club Registered Mobile No."/>
-            <!--<span class="glyphicon glyphicon-envelope form-control-feedback"></span>-->
-          </div></td>
-		  
-		</tr>
-		 
-		  <tr>
-		  
-		  <td></td>
-		  <td>
-          <div class="form-group has-feedback" style="float:left">
-          
-            <!--<span class="glyphicon glyphicon-envelope form-control-feedback"></span>-->
-          </div>
-		 
-          <div class="row">
-            <div class="col-xs-8">    
-                                      
-            </div><!-- /.col -->
-            <div class="col-xs-4">
-              <button type="submit" name="submit" class="btn btn-primary btn-block btn-flat" style="border-radius: 5px" onClick="return validat();">Get OTP</button>
-            </div><!-- /.col -->
-          </div>
-        </form>
-		</div>
-		</td>
-		</tr>
-		 </table>
-		</td></tr>
-		</table>
-		
-		
-		
-		
-
-        <!--<div class="social-auth-links text-center">
-          <p>- OR -</p>
-          <a href="#" class="btn btn-block btn-social btn-facebook btn-flat"><i class="fa fa-facebook"></i> Sign in using Facebook</a>
-          <a href="#" class="btn btn-block btn-social btn-google-plus btn-flat"><i class="fa fa-google-plus"></i> Sign in using Google+</a>
-        </div><!-- /.social-auth-links -->
-
-      
-       <!-- <a href="register.html" class="text-center">Register a new membership</a>-->
-	   
-	   <div style="float:left; width:330px; color:#0000FF;">For any technical problem/feedback please send mail at wbmld@nic.in</div>
-	   
-<div style=" margin-left:-270px"> <img src="logo.png"  style="margin-top:0px; margin-right:286px"></div>
-      </div><!-- /.login-box-body -->
+        <?php
+            if(isset($_REQUEST['getApprovedList'])) {
+                include_once("config/config.php");
+                include_once("config/database.php");
+                $ob= new database();
+                $checkrecord=$ob->get_recs("application","*","final_per='Yes'","org_name");
+        ?>
+        		<div class="row">
+                    <div class="col-xs-12 text-center">    
+                        <h1><?php echo 'List of Approved ' . PUJA_NAME . ' ' . PUJA_YEAR;?></h1>                
+                    </div>
+                </div>
+                <div class="table-responsive">
+                    <table class="table table-striped table-hover">
+                        <thead>
+                            <tr class="table-success">
+                                <th scope="col">Sl#</th>
+                                <th scope="col">ID#</th>
+                                <th scope="col">Organiser</th>
+                                <th scope="col">Status</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <?php $c=1; if($checkrecord) { foreach($checkrecord as $app) {?>
+                            <tr>
+                                <th scope="row"><?php echo $c; ?></th>	
+                                <td><?php echo $app->app_id ?></td>	
+                                <td><?php echo $app->org_name ?> 
+                                    (<a href="indexes.php?action=preview&sendvalue=<?php  echo base64_encode ('id.'.$app->id.'.val'); ?>" target="_blank">View Details</a>)
+                                </td>
+                                <td style="color:#006600">
+                                    Approved on <?php echo $app->finalize_date ?><br/>
+                                    <a href="indexes.php?action=permission&apppanel=yes&id=<?php echo $app->id ?>" target="_blank">Permission Letter</a>
+                                </td>
+                            </tr>
+                            <?php $c++ ; } } ?>
+                        </tbody>
+                    </table>
+                </div>
+        <?php
+            }
+        ?>
+            <div style="padding-top:20px">
+                <span><a href="images/utsav.pdf" target="_blank" style="color:#000099;"><img src="images/icon-pdf.png" width="32px">User Manual</a></span>
+                <span class="text-center hidden-xs" style="color:#0000FF;padding-left:50px;">For any technical issue contact wbmld(at)nic(dot)in</span>
+                <img class="pull-right" src="logo.png">
+            </div>
+        </div><!-- /.login-box-body -->
     </div><!-- /.login-box -->
-
+    
     <!-- jQuery 2.1.3 -->
     <script src="plugins/jQuery/jQuery-2.1.3.min.js"></script>
     <!-- Bootstrap 3.3.2 JS -->
@@ -315,64 +314,64 @@ background-repeat-y: no-repeat;  background-size:100% 100%;">
     </script>
 	
 	<script>
-	
-	function validat()
-	{
-	
-	
-	var ps=document.getElementById("ps").value;
-	var org=document.getElementById("org").value;
-	var mobile=document.getElementById("mobile").value;
-	if((ps=='') || (ps=='Null'))
-	{
-	document.getElementById("ps").focus();
-	alert("Police Station can't blank");
-	return false;
-	}
-	if((org=='') || (org=='Null'))
-	{
-	document.getElementById("org").focus();
-	alert("Organisation / Club can't blank");
-	return false;
-	}
-	if((mobile=='') || (mobile=='Null'))
-	{
-	document.getElementById("mobile").focus();
-	alert("Mobile Number can't blank");
-	return false;
-	}
-	
-	
-	
-	
-	
-	}
+    	
+    	function validat()
+    	{
+    	
+    	
+    	var ps=document.getElementById("ps").value;
+    	var org=document.getElementById("org").value;
+    	var mobile=document.getElementById("mobile").value;
+    	if((ps=='') || (ps=='Null'))
+    	{
+    	document.getElementById("ps").focus();
+    	alert("Police Station can't blank");
+    	return false;
+    	}
+    	if((org=='') || (org=='Null'))
+    	{
+    	document.getElementById("org").focus();
+    	alert("Organisation / Club can't blank");
+    	return false;
+    	}
+    	if((mobile=='') || (mobile=='Null'))
+    	{
+    	document.getElementById("mobile").focus();
+    	alert("Mobile Number can't blank");
+    	return false;
+    	}
+    	
+    	
+    	
+    	
+    	
+    	}
 	</script>
 	
 	<script>
-	function login_check()
-	{
-	var user_id=document.getElementById("user_id").value;
-	var password=document.getElementById("password").value;
-	
-	if((user_id=='') || (user_id=='Null'))
-	{
-	document.getElementById("user_id").focus();
-	alert("User Id can't blank");
-	return false;
-	}
-	if((password=='') || (password=='Null'))
-	{
-	document.getElementById("password").focus();
-	alert("Password can't blank");
-	return false;
-	}
-	
-	
-	
-	//return false;
-	
-	}
+    	function login_check()
+    	{
+    	var user_id=document.getElementById("user_id").value;
+    	var password=document.getElementById("password").value;
+    	
+    	if((user_id=='') || (user_id=='Null'))
+    	{
+    	document.getElementById("user_id").focus();
+    	alert("User Id can't blank");
+    	return false;
+    	}
+    	if((password=='') || (password=='Null'))
+    	{
+    	document.getElementById("password").focus();
+    	alert("Password can't blank");
+    	return false;
+    	}
+    	
+    	
+    	
+    	//return false;
+    	
+    	}
 	</script>
   </body>
 </html>
