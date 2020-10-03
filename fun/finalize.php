@@ -48,12 +48,12 @@ if($disable) {
 
 $ps=substr($_SESSION['ps'],0,3).'/'.$cyear.'/'.$ln;
 $pair="app_id='".$ps."',finalize='Yes',finalize_date=NOW(),submission_date=NOW()";
-echo $DestinationAddress=$_SESSION['mobile_no'];
-echo $Message='Your Application ID is:'.$ps;
+$DestinationAddress=$_SESSION['mobile_no'];
+$Message='Your Application ID is:'.$ps;
 
 $update=$ob->db_update("application","$pair","id='".$_REQUEST['nid']."'");
 if($update){
-	include_once("sms/smsgw_cdac.php");
-    sendSingleSMS($username,$encryp_password,$senderid,$Message,$DestinationAddress,$deptSecureKey);
-	echo '<script type="text/javascript" language="javascript">window.location="../indexes.php?action=finalize&msg=success";</script>';
+  include_once("sms/smsgw_cdac.php");
+  sendSingleSMS($username,$encryp_password,$senderid,$Message,$DestinationAddress,$deptSecureKey);
+  echo '<script type="text/javascript" language="javascript">window.location="../indexes.php?action=finalize&msg=success";</script>';
 }
