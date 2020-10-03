@@ -34,8 +34,8 @@ $pdf->AddPage();
 $PS     = substr($checkrecord->ps, 3);
 $add_ps = 'Address- '.$checkrecord->org_address.', PS- '.$PS.', Dist.- Malda (West Bengal)';
 $logo   = $pdf->Image('images/WB-Logo.png',100,5,12);
-$logo   = $pdf->Image('images/SDO-Sadar-Sign.png',155,205,33,17);
-$logo   = $pdf->Image('images/SDO-Sadar-Sign.png',155,252,33,17);
+$logo   = $pdf->Image($sign,155,205,33,17);
+$logo   = $pdf->Image($sign,155,252,33,17);
 
 $pdf->SetFont('Arial','',8);
 $pdf->SetXY(140,218);
