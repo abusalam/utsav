@@ -21,7 +21,7 @@ else
 {
 
 $exp=explode('/',$_FILES['file_res_copy']['type']);
-echo $fsize=$_FILES['file_res_copy']['size'].'<br>';
+//echo $fsize=$_FILES['file_res_copy']['size'].'<br>';
  //echo $fsize=$_FILES['file_res_copy']['size']/1000000;
 
 if(($exp[1]=='pdf') || ($exp[1]=='jpeg') || ($exp[1]=='jpg') || ($exp[1]=='png')) 
@@ -52,7 +52,7 @@ $file_mem_det=$_REQUEST['file_mem_det_old'];
 else
 {
 $exp=explode('/',$_FILES['file_mem_det']['type']);
-echo $fsize=$_FILES['file_mem_det']['size'].'<br>';
+//echo $fsize=$_FILES['file_mem_det']['size'].'<br>';
  //echo $fsize=$_FILES['file_res_copy']['size']/1000000;
 if(($exp[1]=='pdf') || ($exp[1]=='jpg') || ($exp[1]=='jpeg') || ($exp[1]=='png')) 
 {
@@ -80,7 +80,7 @@ $file_noc_land=$_REQUEST['file_noc_land_old'];
 else
 {
 $exp=explode('/',$_FILES['file_noc_land']['type']);
-echo $fsize=$_FILES['file_noc_land']['size'].'<br>';
+//echo $fsize=$_FILES['file_noc_land']['size'].'<br>';
  //echo $fsize=$_FILES['file_res_copy']['size']/1000000;
 if(($exp[1]=='pdf') || ($exp[1]=='jpg') || ($exp[1]=='jpeg') || ($exp[1]=='png')) 
 {
@@ -100,7 +100,7 @@ $file_noc_land=$_REQUEST['file_noc_land_old'];
 if($_FILES['file_site_plan']['name']=='')
 {
 
-echo "A".$file_site_plan=$_REQUEST['file_site_plan_old'];
+//echo "A".$file_site_plan=$_REQUEST['file_site_plan_old'];
 }
 else
 {
@@ -110,14 +110,14 @@ else
 
 
 $exp=explode('/',$_FILES['file_site_plan']['type']);
-echo $fsize=$_FILES['file_site_plan']['size'].'<br>';
+//echo $fsize=$_FILES['file_site_plan']['size'].'<br>';
  //echo $fsize=$_FILES['file_res_copy']['size']/1000000;
 if(($exp[1]=='pdf') || ($exp[1]=='jpg') || ($exp[1]=='jpeg') || ($exp[1]=='png')) 
 {
-echo "B".$root9=$_SESSION['id'].'_'.rand(111,999).$_FILES['file_site_plan']['name'];
+//echo "B".$root9=$_SESSION['id'].'_'.rand(111,999).$_FILES['file_site_plan']['name'];
 $dst9='../doc/siteplan/'.$root9;
 move_uploaded_file($_FILES['file_site_plan']['tmp_name'],$dst9);
-echo "B".$file_site_plan=$root9;
+//echo "B".$file_site_plan=$root9;
 }
 else
 {
@@ -137,7 +137,7 @@ $file_last_puja_per=$_REQUEST['file_last_puja_per_old'];
 else
 {
 $exp=explode('/',$_FILES['file_last_puja_per']['type']);
-echo $fsize=$_FILES['file_last_puja_per']['size'].'<br>';
+//echo $fsize=$_FILES['file_last_puja_per']['size'].'<br>';
  //echo $fsize=$_FILES['file_res_copy']['size']/1000000;
 if(($exp[1]=='pdf') || ($exp[1]=='jpg') || ($exp[1]=='jpeg') || ($exp[1]=='png')) 
 {
@@ -168,7 +168,7 @@ else
 
 
 $exp=explode('/',$_FILES['file_pmnt_electric']['type']);
-echo $fsize=$_FILES['file_pmnt_electric']['size'].'<br>';
+//echo $fsize=$_FILES['file_pmnt_electric']['size'].'<br>';
  //echo $fsize=$_FILES['file_res_copy']['size']/1000000;
 if(($exp[1]=='pdf') || ($exp[1]=='jpg') || ($exp[1]=='jpeg') || ($exp[1]=='png')) 
 {
@@ -202,7 +202,7 @@ else
 
 
 $exp=explode('/',$_FILES['file_fire_pay']['type']);
-echo $fsize=$_FILES['file_fire_pay']['size'].'<br>';
+//echo $fsize=$_FILES['file_fire_pay']['size'].'<br>';
  //echo $fsize=$_FILES['file_res_copy']['size']/1000000;
 if(($exp[1]=='pdf') || ($exp[1]=='jpg') || ($exp[1]=='jpeg') || ($exp[1]=='png')) 
 {
@@ -235,7 +235,7 @@ else
 
 
 $exp=explode('/',$_FILES['file_bank_p_book']['type']);
-echo $fsize=$_FILES['file_bank_p_book']['size'].'<br>';
+//echo $fsize=$_FILES['file_bank_p_book']['size'].'<br>';
  //echo $fsize=$_FILES['file_res_copy']['size']/1000000;
 if(($exp[1]=='pdf') || ($exp[1]=='jpg') || ($exp[1]=='jpeg') || ($exp[1]=='png')) 
 {
@@ -263,7 +263,7 @@ else
 
 
 $exp=explode('/',$_FILES['file_muni_form']['type']);
-echo $fsize=$_FILES['file_muni_form']['size'].'<br>';
+//echo $fsize=$_FILES['file_muni_form']['size'].'<br>';
  //echo $fsize=$_FILES['file_res_copy']['size']/1000000;
 if(($exp[1]=='pdf') || ($exp[1]=='jpg') || ($exp[1]=='jpeg') || ($exp[1]=='png')) 
 {
@@ -298,7 +298,7 @@ else
 
 
 $exp=explode('/',$_FILES['file_muni_pay']['type']);
-echo $fsize=$_FILES['file_muni_pay']['size'].'<br>';
+//echo $fsize=$_FILES['file_muni_pay']['size'].'<br>';
  //echo $fsize=$_FILES['file_res_copy']['size']/1000000;
 if(($exp[1]=='pdf') || ($exp[1]=='jpg') || ($exp[1]=='jpeg') || ($exp[1]=='png')) 
 {
