@@ -1,13 +1,4 @@
 <?php
-
-include_once("config/config.php");
-include_once("config/database.php");
-
-
-
-$ob= new database();
-
-
 include"lib/header.php";
 include"lib/menu.php";
 ?> 
@@ -513,7 +504,7 @@ No open frame can be used within 200 yrds from the puja pandal and no cooking ar
 Use of height inflammable materials for inaction of pandal is discarded.
 Cloths used for the pandal to be dipped in fire retardant solution.
 Provision of sufficient water of the fighting which shall not be less than 0.75ltrs. Per sq. mtrs. Of floor area which pandal /structure and ISI marked appropriate fire extinguisher  @minimum  02 (two) per thousand sq. feet floor area, two number of ceiling hook, lodder and stand bucked to be keep ready in the pandal for the fighting small fire.
-There must be a 04 (four) feet clear open space from the poperty line of the building, boundary wall or any other permanent structure as per judgment of the Hon’ble High Court, Calcutta Vid W.T.No.856 of 2009 dated 15.09.2009.<input  type="checkbox"  id="orgmob" class="form-control" width="width:20px" 
+There must be a 04 (four) feet clear open space from the poperty line of the building, boundary wall or any other permanent structure as per judgment of the Honï¿½ble High Court, Calcutta Vid W.T.No.856 of 2009 dated 15.09.2009.<input  type="checkbox"  id="orgmob" class="form-control" width="width:20px" 
 						
 						 name="orgmob"    /> </td>
 						 </tr>
@@ -533,8 +524,8 @@ There must be a 04 (four) feet clear open space from the poperty line of the bui
 						 <tr height="40"><td>Undertaking
 That, I behalf of my organisation, undertake that my organisation will comply with the following norms strictly as fixed upon by the West Bengal Pollution Control Board, for organising  a community Durga puja/kali puja in accordance with the Environment (Protection), Act, 1989 read with the noise pollution (Regulation & control) Rules, 2000 Norms as are follows:
 That my organisation will use and operate microphones obtaining permission from the concerned police authorities of district authorities and will abide by all the terms and conditions fixed upon by the police authorities and district authorities at the time of granting such permission.
-Microphones will be used or operated fixing ‘sound limiter’ with the amplifire system in accordance with the order passed by the Hon’ble High Court, Calcutta, in/c/with matter no. 4303(W) of 1995 (Om Birangana religious society, petitioners-vs-state of West Bengal and others, respondents), for maintaining ambient noise slandered as  specified for different areas as per the aforementioned Act and rules mentioned above.
-No microphone shall be used or operated within ‘silent zone’ areas i.e. within 100 meters. of any educational institutions, hospitals, nursing home or court areas in accordence with the Act and rule as mentioned above. (During holidays and after office hours, the area of the educational institutions and courts are the treated as ‘Silent Zone’).
+Microphones will be used or operated fixing ï¿½sound limiterï¿½ with the amplifire system in accordance with the order passed by the Honï¿½ble High Court, Calcutta, in/c/with matter no. 4303(W) of 1995 (Om Birangana religious society, petitioners-vs-state of West Bengal and others, respondents), for maintaining ambient noise slandered as  specified for different areas as per the aforementioned Act and rules mentioned above.
+No microphone shall be used or operated within ï¿½silent zoneï¿½ areas i.e. within 100 meters. of any educational institutions, hospitals, nursing home or court areas in accordence with the Act and rule as mentioned above. (During holidays and after office hours, the area of the educational institutions and courts are the treated as ï¿½Silent Zoneï¿½).
 That, no banned category of the noise making fireworks which generates noise more than 90 dB(A), impulse from a distance of 5 meters from the brusting point shall be used by the members of the community puja organiser either within the puja festive period or during the immersion ceremonial procession of idols.
 That, no Disk  Jockey  Set(D.J) will be used during the procession of the immersion of the idols.
 That, the following norms will be compiled strictly during the immersion procession:

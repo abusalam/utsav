@@ -1,13 +1,4 @@
 <?php
-
-include_once("config/config.php");
-include_once("config/database.php");
-
-
-
-$ob= new database();
-
-
 include"lib/header.php";
 include"lib/menu.php";
 ?> 
@@ -305,5 +296,5 @@ function pop_up(id){
         </section><!-- /.content -->
       </div>
 	  
-<?php include"lib/footer.php";?>
+<?php include "lib/footer.php";?>
     </div><!-- ./wrapper -->

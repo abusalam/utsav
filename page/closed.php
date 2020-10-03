@@ -1,10 +1,4 @@
 <?php
-
-include_once("config/config.php");
-include_once("config/database.php");
-
-$ob= new database();
-
 include"lib/header.php";
 include"lib/menu.php";
 ?> 

@@ -4,12 +4,11 @@ if($_SERVER['HTTPS']!='on') {
     header("Location:$redirect");
     exit();
 }
-if ((strtotime(START_DATE)<time()) && (!isset($_REQUEST['dev']))) {
+if (strtotime(START_DATE)<time()) {
     include "welcome.php";
     exit();
 }
-session_start(); 
-
+session_start();
 ?>
 <!DOCTYPE html>
 <html>
