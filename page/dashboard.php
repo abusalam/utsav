@@ -71,7 +71,7 @@ function pop_up(id){
 </script>
 
  <script>
-			   $(window).load(function(){
+         $(window).load(function(){
   setTimeout(function(){ $('.video-field-new').fadeOut("very slow") }, 2000);
 });</script>
 
@@ -129,40 +129,45 @@ function pop_up(id){
 </style>
 
 
-    <div class="content-wrapper">
-        <!-- Content Header (Page header) -->
-        <section class="content-header">
-          <h1>Application for permission to hold <?php echo PUJA_NAME;?></h1>
-        </section>
-        <!-- Main content -->
-        <section class="content">
-          <div class="row">
-            <div class="col-xs-12">
-              <!-- /.box -->
-                <div id="overlay_form" style="display:none;z-index:9999999"></div>
-                <div class="box">
-                    <div>
-                        <div class="box-header">
-                            <div style="color:#FF0000;font-size:32px">Last Date of Application for <?=PUJA_NAME . ' is ' . CLOSING_DATE?>.</div>
-                        </div><!-- /.box-header -->
-                        <div class="box-body">
-        	                <div class="content">
-                    			<div class="mediabox" style="width:700px">
-                                    <?php $checkrecords=$ob->get_rec("application","*","user_id='".$_SESSION['id']."'"); ?>
-                                    <h2><?=PUJA_NAME.' '.PUJA_YEAR?></h2>
-                                    <h3>During: <?=PUJA_DURATION?></h3>
-                                    <h3>Police Station: <?=$_SESSION['ps']?></h3>
-                    			</div>
-        		            </div><!-- /content -->
-                        </div><!-- /.box-body -->
-                    </div><!-- /tabs -->
-    		        <script src="js_tab/cbpFWTabs.js"></script>
-            		<script>
-            			new CBPFWTabs( document.getElementById( 'tabs' ) );
-            		</script>												
-                </div><!-- /.box -->
-            </div><!-- /.col -->
-          </div><!-- /.row -->
-        </section><!-- /.content -->
-    </div><!-- ./wrapper -->
-    <?php include "lib/footer.php"; ?>                			    
+<div class="content-wrapper">
+  <!-- Content Header (Page header) -->
+  <section class="content-header">
+    <h1>Application for permission to hold <?php echo PUJA_NAME;?></h1>
+  </section>
+  <!-- Main content -->
+  <section class="content">
+    <div class="row">
+      <div class="col-xs-12">
+        <!-- /.box -->
+        <div id="overlay_form" style="display:none;z-index:9999999"></div>
+        <div class="box">
+          <div>
+            <div class="box-header">
+              <div style="color:#FF0000;font-size:32px">Last Date of Application for <?=PUJA_NAME . ' is ' . CLOSING_DATE?>.</div>
+            </div><!-- /.box-header -->
+            <div class="box-body">
+              <div class="content">
+              <div class="mediabox" style="width:700px">
+                <?php $applications=$ob->get_rec_count("application"); ?>
+                <?php $finalized=$ob->get_rec_count("application","finalize='Yes'"); ?>
+                <?php $users=$ob->get_rec_count("user_reg"); ?>
+                <?php $active=$ob->get_rec_count("application","pwd!=''"); ?>
+                <h2><?=PUJA_NAME.' '.PUJA_YEAR?></h2>
+                <h3>During: <?=PUJA_DURATION?></h3>
+                <h3>Police Station: <?=$_SESSION['ps']?></h3>
+                <h3>Total Users: (<?=($active-8) .'/'. ($users-8)?>)</h3>
+                <h3>Total Applications: (<?=$finalized .'/'. $applications?>)</h3>
+              </div>
+            </div><!-- /content -->
+            </div><!-- /.box-body -->
+          </div><!-- /tabs -->
+        <script src="js_tab/cbpFWTabs.js"></script>
+        <script>
+          new CBPFWTabs( document.getElementById( 'tabs' ) );
+        </script>
+        </div><!-- /.box -->
+      </div><!-- /.col -->
+    </div><!-- /.row -->
+  </section><!-- /.content -->
+</div><!-- ./wrapper -->
+<?php include "lib/footer.php"; ?>
