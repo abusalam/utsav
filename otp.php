@@ -3,7 +3,7 @@
 <html>
   <head>
     <meta charset="UTF-8">
-    <title>UTSAV</title>
+    <title>Verify OTP - UTSAV</title>
     <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
     <!-- Bootstrap 3.3.2 -->
     <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
@@ -119,11 +119,11 @@ background-repeat-y: no-repeat;  background-size: 100% 100%;">
            
           </div>
           <div class="form-group has-feedback">
-            <input type="text" class="form-control"  id="user_id" name="user_id" placeholder="User Id"/>
+            <input type="text" class="form-control"  id="user_id" name="user_id" placeholder="<?=$_SESSION['mob']?>"/>
            
           </div>
           <div class="form-group has-feedback">
-            <input type="password" class="form-control"  id="password" name="password" placeholder="Password"/>
+            <input type="password" class="form-control"  id="password" name="password" placeholder="<?=$_SESSION['mob']?>"/>
          
           </div>
           <div class="row">
@@ -234,7 +234,7 @@ background-repeat-y: no-repeat;  background-size: 100% 100%;">
 		<tr> <td width="100px"><b style="color:#FF0000">*</b>Enter OTP</td><td><div class="form-group has-feedback" style="width:355px">
 		
 		<form action="fun/reg.php" method="post">
-            <input type="text" class="form-control"  id="otp" name="otp" placeholder="Organisation / Club"/>
+            <input type="text" class="form-control"  id="otp" name="otp" placeholder="OTP(One Time Password)"/>
             <!--<span class="glyphicon glyphicon-envelope form-control-feedback"></span>-->
           </div></td>
 		  
@@ -268,7 +268,7 @@ background-repeat-y: no-repeat;  background-size: 100% 100%;">
 		 </table>
 		</td></tr>
 		</table>
-		
+		<div class="alert alert-success">OTP(One Time Password) not received? Use your mobile number(<?=$_SESSION['mob']?>) as default password to login.</div>
 		
 		
 		

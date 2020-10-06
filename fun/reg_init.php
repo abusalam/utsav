@@ -37,9 +37,9 @@ $value="'".$_REQUEST['org']."','".$_REQUEST['ps']."','".$_REQUEST['email']."','"
 	$rs=mysql_query($sql);
 	while($row_=mysql_fetch_array($rs))
 	{
-	    $_SESSION['lid']=$liid;
-	    $_SESSION['mobile']=$mobile;
-	    $mob_no=$row_['mobile'];
+		$_SESSION['lid']=$liid;
+		$_SESSION['mobile']=$mobile;
+		$mob_no=$row_['mobile'];
 		$otp=$row_['otp'];
 		$DestinationAddress = $mob_no;
 		//echo $Message=$row_['phone2'];
