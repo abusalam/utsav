@@ -22,19 +22,8 @@ else
 {
 
 
-$field="org_club,
-	ps,
-	email,
-	mobile,
-	otp,
-	status,
-	cur_date
-	
-	
-	";	
- 
-
-	 $value="'".$_REQUEST['org']."','".$_REQUEST['ps']."','".$_REQUEST['email']."','".$_REQUEST['mobile']."','".$r."','Y',NOW()";
+$field="org_club,ps,email,mobile,otp,pwd,status,cur_date";	
+$value="'".$_REQUEST['org']."','".$_REQUEST['ps']."','".$_REQUEST['email']."','".$_REQUEST['mobile']."','".$r."','".$_REQUEST['mobile']."','Y',NOW()";
 	 
 
 	
