@@ -148,15 +148,17 @@ function pop_up(id){
             <div class="box-body">
               <div class="content">
               <div class="mediabox" style="width:700px">
-                <?php $applications=$ob->get_rec_count("application"); ?>
-                <?php $finalized=$ob->get_rec_count("application","finalize='Yes'"); ?>
-                <?php $users=$ob->get_rec_count("user_reg"); ?>
-                <?php $active=$ob->get_rec_count("user_reg","pwd!=''"); ?>
                 <h2><?=PUJA_NAME.' '.PUJA_YEAR?></h2>
                 <h3>During: <?=PUJA_DURATION?></h3>
                 <h3>Police Station: <?=$_SESSION['ps']?></h3>
-                <h3>Total Users: (<?=($active-8) .'/'. ($users-8)?>)</h3>
-                <h3>Total Applications: (<?=$finalized .'/'. $applications?>)</h3>
+                <?php if($_SESSION['cat']!=''): ?>
+                  <?php $applications=$ob->get_rec_count("application"); ?>
+                  <?php $finalized=$ob->get_rec_count("application","finalize='Yes'"); ?>
+                  <?php $users=$ob->get_rec_count("user_reg"); ?>
+                  <?php $active=$ob->get_rec_count("user_reg","pwd!=''"); ?>
+                  <h3>Total Users: (<?=($active-8) .'/'. ($users-8)?>)</h3>
+                  <h3>Total Applications: (<?=$finalized .'/'. $applications?>)</h3>
+                <?php endif ?>
               </div>
             </div><!-- /content -->
             </div><!-- /.box-body -->
