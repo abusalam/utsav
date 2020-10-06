@@ -50,7 +50,7 @@ class database {
   }
 
 
-  function get_rec_count($table, $where='') {
+  function get_rec_count($table, $fields='id', $where='') {
     $q = "select $fields from $table";
     if($where) {
       $q .= " where $where";
