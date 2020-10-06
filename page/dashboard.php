@@ -151,7 +151,7 @@ function pop_up(id){
                 <?php $applications=$ob->get_rec_count("application"); ?>
                 <?php $finalized=$ob->get_rec_count("application","finalize='Yes'"); ?>
                 <?php $users=$ob->get_rec_count("user_reg"); ?>
-                <?php $active=$ob->get_rec_count("application","pwd!=''"); ?>
+                <?php $active=$ob->get_rec_count("user_reg","pwd!=''"); ?>
                 <h2><?=PUJA_NAME.' '.PUJA_YEAR?></h2>
                 <h3>During: <?=PUJA_DURATION?></h3>
                 <h3>Police Station: <?=$_SESSION['ps']?></h3>
