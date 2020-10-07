@@ -156,9 +156,9 @@ function pop_up(id){
                   <?php $finalized=$ob->get_rec_count("application","id","finalize='Yes'"); ?>
                   <?php $approved=$ob->get_rec_count("application","id","final_per='Yes'"); ?>
                   <?php $users=$ob->get_rec_count("user_reg"); ?>
-                  <?php $active=$ob->get_rec_count("user_reg","id","pwd!=''"); ?>
-                  <h3>Users(Active/Total): <?=($active-8) .'/'. ($users-8)?></h3>
-                  <h3>Applications(Approved/Submitted/Total): <?=$finalized .'/'. $applications?></h3>
+                  <?php $active=$ob->get_rec_count("user_reg","id","pwd!=mobile"); ?>
+                  <h3>Users(Activated/Total): <?=($active-8) .'/'. ($users-8)?></h3>
+                  <h3>Applications(Approved/Submitted/Total): <?=$approved.'/'.$finalized .'/'. $applications?></h3>
                 <?php endif ?>
               </div>
             </div><!-- /content -->
