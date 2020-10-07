@@ -212,8 +212,8 @@ function pop_up(id){
 							 <td><?php echo $c; ?></td>	
                <td><?php echo $app->ps ?></td>	
 							  <td><?php echo $app->app_id ?></td>	
-                <td><?=$app->org_name?>(<?=$app->org_mobile?>/<?=$app->sec_mobile?>)</td>
-                <td><?=date(strtotime($app->submission_date),'d/m/Y h:i a')?></td>
+                <td><?=$app->org_name?> ( <?=$app->org_mobile?> / <?=$app->sec_mobile?> )</td>
+                <td><?=date('d/m/Y h:i a',strtotime($app->submission_date))?></td>
 							    <td><a href="indexes.php?action=preview&sendvalue=<?php  echo base64_encode ('id.'.$app->id.'.val'); ?>" target="_blank">Preview</a></td>
 								 <td><a href="indexes.php?action=doc_preview&id=<?php echo $app->id; ?>"  target="_blank">Click to view</a></td>	
 							   <td style="color:#006600">Approved
