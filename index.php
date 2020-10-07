@@ -172,7 +172,7 @@ session_start();
                 <span style="font-size:20px" class="burning">for </span> 
                 <span style="font-size:20px" class="burning">Puja &amp; </span>  
                 <span style="font-size:30px" class="burning">V</span><span style="font-size:20px" class="burning">erification </span> 
-                <span style="font-size:30px" class="burning">(UTSAV)</span>
+                <div style="font-size:30px" class="burning">(UTSAV)</div>
             </div>
             <div class="row">
                 <?php
