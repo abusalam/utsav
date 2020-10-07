@@ -196,6 +196,7 @@ function pop_up(id){
 							<table border="1" style="width:100%">
 							<tr>
 							 <th>Sl. No</th>
+               <th>Polics Station</th>
 							 <th> Application ID</th>
 							 <th>Organiser</th>
 							<th>Full Preview</th>
@@ -208,8 +209,9 @@ function pop_up(id){
 							 <?php $c=1; if($checkrecord) { foreach($checkrecord as $app) {?>
 							 <tr>
 							 <td><?php echo $c; ?></td>	
+               <td><?php echo $app->ps ?></td>	
 							  <td><?php echo $app->app_id ?></td>	
-							   <td><?php echo $app->org_name ?></td>
+                <td><?=$app->org_name?>(<?=$app->org_mobile?>/<?=$app->sec_mobile?>)<br/>Submitted On: <?=$app->submission_date?></td>
 							    <td><a href="indexes.php?action=preview&sendvalue=<?php  echo base64_encode ('id.'.$app->id.'.val'); ?>" target="_blank">Preview</a></td>
 								 <td><a href="indexes.php?action=doc_preview&id=<?php echo $app->id; ?>"  target="_blank">Click to view</a></td>	
 							   <td style="color:#006600">Approved
