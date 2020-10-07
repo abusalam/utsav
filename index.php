@@ -204,6 +204,12 @@ session_start();
                         <button type="submit" name="getApprovedList" class="btn btn-success" >List of Approved Puja Organizers</button>
                         <button type="submit" name="submitlogin" class="btn btn-primary pull-right" onClick="return login_check();">Log In</button>
                     </form>
+                    <div class="list-group">
+                        <a href="https://greenpuja.wbpcb.gov.in" target="_blank" class="list-group-item list-group-item-success">
+                            <h4 class="list-group-item-heading">Green Puja Form</h4>
+                            <img class="img img-responsive" src="images/wbpcb.jpg"/>
+                        </a>
+                    </div>
                 </div>
                 <div class="col-md-6">
                     <form style="padding:20px;margin-bottom:20px;" action="fun/reg_init.php" method="post">
