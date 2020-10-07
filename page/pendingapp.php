@@ -206,7 +206,7 @@ $checkrecords=$ob->get_rec("application","*","user_id='".$_SESSION['id']."' AND 
 }*/
 
 ?>
-						<div class="mediabox" style="width:960px">
+						<div class="mediabox">
 							<form method="post" action="fun/permission.php">
 							<!--<pre><?=var_dump($_SESSION)?></pre>-->
 							<table border="1" style="width:100%">
@@ -215,6 +215,7 @@ $checkrecords=$ob->get_rec("application","*","user_id='".$_SESSION['id']."' AND 
                <th>Polics Station</th>
 							 <th> Application ID</th>
 							 <th>Organiser</th>
+               <th>Submission Date</th>
 							 <th>Full Preview</th>
 							 
 							  <th>Document Preview </th>
@@ -229,7 +230,8 @@ $checkrecords=$ob->get_rec("application","*","user_id='".$_SESSION['id']."' AND 
 							 <td><?php echo $c; ?></td>	
                <td><?php echo $app->ps ?></td>
 							  <td><?php echo $app->app_id ?></td>	
-							   <td><?=$app->org_name?>(<?=$app->org_mobile?>/<?=$app->sec_mobile?>)<br/>Submitted On: <?=$app->submission_date?></td>
+							   <td><?=$app->org_name?>(<?=$app->org_mobile?>/<?=$app->sec_mobile?>)</td>
+                 <td><?=date(strtotime($app->submission_date),'d/m/Y h:i a')?></td>
 							  
 							   <td><a href="indexes.php?action=preview&sendvalue=<?php  echo base64_encode ('id.'.$app->id.'.val'); ?>" target="_blank">Preview</a></td>	
 
