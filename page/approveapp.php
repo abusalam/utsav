@@ -222,8 +222,7 @@ function pop_up(id){
                 <td><?=date('d/m/Y h:i a',strtotime($app->submission_date))?></td>
 							    <td><a href="indexes.php?action=preview&sendvalue=<?php  echo base64_encode ('id.'.$app->id.'.val'); ?>" target="_blank">Preview</a></td>
 								 <td><a href="indexes.php?action=doc_preview&id=<?php echo $app->id; ?>"  target="_blank">Click to view</a></td>	
-							   <td style="color:#006600">Approved
-							   </td>
+							   <td style="color:#006600">Approved</td>
 							    <?php if(($_SESSION['cat']=='SDO') || ($_SESSION['cat']=='admin')) { ?>
 							    <td style="color:#006600"><a href="indexes.php?action=permission&apppanel=yes&id=<?php echo $app->id ?>" target="_blank"> &nbsp;&nbsp;Print/View</a>
 							   <?php } ?></td>
@@ -231,12 +230,7 @@ function pop_up(id){
 							</tr>
 							 <?php $c++ ; } } ?>
 							 
-							 <tr height="40"><td colspan="11" align="center">
-							 
-							
-							
-						  
-						 </tr>	
+							 <tr height="40"><td colspan="12" align="center"></td></tr>
 						 </table>
 							</form>
 							
