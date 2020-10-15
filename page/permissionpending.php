@@ -150,8 +150,8 @@ function pop_up(id){
                         			<div class="mediabox" style="width:700px">
 <?php $checkrecords=$ob->get_rec("application","*","user_id='".$_SESSION['id']."' AND ps='".$_SESSION['ps']."'"); ?>
 <?php if ($checkrecords->final_per=='Yes'): ?>
-                                        <div style="color:#006600;font-size:32px">Permitted on <?=$checkrecords->final_per_date?>
-                                          <a href="indexes.php?action=permission&apppanel=yes&id=<?php echo $app->id ?>" target="_blank">Permission Letter</a>
+                                        <div style="color:#006600;font-size:32px">Permitted on <?=$checkrecords->final_per_date?><br/>
+                                          <a href="indexes.php?action=permission&apppanel=yes&id=<?php echo $checkrecords->id ?>" target="_blank">Permission Letter</a>
                                         </div>
 <?php elseif ($checkrecords->final_per=='No'): ?> 
                                         <div style="color:#FF0000;font-size:32px">Rejected on <?=$checkrecords->final_per_date?></div>
