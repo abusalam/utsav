@@ -270,9 +270,9 @@ session_start();
                         <thead>
                             <tr class="table-success">
                                 <th scope="col">Sl#</th>
-                                <th scope="col">ID#</th>
+                                <th scope="col">Permission ID#</th>
                                 <th scope="col">Organiser</th>
-                                <th scope="col">Status</th>
+                                <th scope="col">Approved On</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -280,12 +280,11 @@ session_start();
                             <tr>
                                 <th scope="row"><?php echo $c; ?></th>	
                                 <td><?php echo $app->app_id ?></td>	
-                                <td><?php echo $app->org_name ?> 
-                                    (<a href="indexes.php?action=preview&sendvalue=<?php  echo base64_encode ('id.'.$app->id.'.val'); ?>" target="_blank">View Details</a>)
+                                <td>
+																	<?=$app->org_name?> (<?=$app->org_mobile?> / <?=$app->sec_mobile?>)
                                 </td>
                                 <td style="color:#006600">
-                                    Approved on <?php echo $app->finalize_date ?><br/>
-                                    <a href="indexes.php?action=permission&apppanel=yes&id=<?php echo $app->id ?>" target="_blank">Permission Letter</a>
+                                    <?=date('d/m/Y h:i a',strtotime($app->final_per_date))?><br/>
                                 </td>
                             </tr>
                             <?php $c++ ; } } ?>

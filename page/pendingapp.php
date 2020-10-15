@@ -215,7 +215,7 @@ $checkrecords=$ob->get_rec("application","*","user_id='".$_SESSION['id']."' AND 
                <th>Polics Station</th>
 							 <th> Application ID</th>
 							 <th>Organiser</th>
-               <th>Submission Date</th>
+               <th>Last Updated On</th>
 							 <th>Full Preview</th>
 							 
 							  <th>Document Preview </th>
@@ -261,7 +261,7 @@ $checkrecords=$ob->get_rec("application","*","user_id='".$_SESSION['id']."' AND 
 							</tr>
 							 <?php $c++ ; } } ?>
 							 
-							 <tr height="40"><td colspan="7" align="center">
+							 <tr height="40"><td colspan="9" align="center">
 							 
 							<?php if($_SESSION['cat']!='admin') { ?>
 							 <input  type="submit"  

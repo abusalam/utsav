@@ -199,7 +199,10 @@ function pop_up(id){
                <th>Polics Station</th>
 							 <th> Application ID</th>
 							 <th>Organiser</th>
-               <th>Submission Date</th>
+							 <th>Mobile</th>
+							 <th>Secratory</th>
+							 <th>Mobile</th>
+               <th>Approved On</th>
 							<th>Full Preview</th>
 							  <th>Document Preview </th>
 							 <th>Permission</th>
@@ -212,7 +215,10 @@ function pop_up(id){
 							 <td><?php echo $c; ?></td>	
                <td><?php echo $app->ps ?></td>	
 							  <td><?php echo $app->app_id ?></td>	
-                <td><?=$app->org_name?> ( <?=$app->org_mobile?> / <?=$app->sec_mobile?> )</td>
+                <td><?=$app->org_name?></td>
+								<td><?=$app->org_mobile?></td>
+								<td><?=$app->sec_name?></td>
+								<td><?=$app->sec_mobile?></td>
                 <td><?=date('d/m/Y h:i a',strtotime($app->submission_date))?></td>
 							    <td><a href="indexes.php?action=preview&sendvalue=<?php  echo base64_encode ('id.'.$app->id.'.val'); ?>" target="_blank">Preview</a></td>
 								 <td><a href="indexes.php?action=doc_preview&id=<?php echo $app->id; ?>"  target="_blank">Click to view</a></td>	
@@ -225,7 +231,7 @@ function pop_up(id){
 							</tr>
 							 <?php $c++ ; } } ?>
 							 
-							 <tr height="40"><td colspan="7" align="center">
+							 <tr height="40"><td colspan="11" align="center">
 							 
 							
 							
