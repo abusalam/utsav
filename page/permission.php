@@ -109,6 +109,8 @@ $pdf->Write(4, $num++ . '. Road cannot be encroached by any means.');
 $pdf->Ln();
 $pdf->Write(4, $num++ . '. Immersion must be completed as per direction of local Police Administration & Civil Administration.');
 $pdf->Ln();
+$pdf->Write(4, $num++ . '. The Movements of people as well as the vehicles should be restricted so that normalcy of traffic is not affected by any means on the nearby roads.');
+$pdf->Ln();
 $pdf->Write(4, $num++ . '. Liaison with the Local Police authority to be maintained.');
 $pdf->Ln();
 $pdf->Write(4, $num++ . '. Organizer shall be responsible for paying all due costs and license fees , public liabilities and cleaning up program venue after use.');
