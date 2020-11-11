@@ -18,15 +18,17 @@ if(isset($_REQUEST['apppanel'])=='yes') {
 }
 
 if(strstr(CHL_PS, substr($checkrecord->ps, 0, 3)) === false) {
-  $MemoNo = MEMO_NO;
-  $Dated  = MEMO_DATE;
-  $sign   = 'images/SDO-Sadar-Sign.png';
-  $SubDiv = SDIV_SADAR;
+  $MemoNo  = MEMO_NO;
+  $MemoNo2 = MEMO_NO2;
+  $Dated   = MEMO_DATE;
+  $sign    = 'images/SDO-Sadar-Sign.png';
+  $SubDiv  = SDIV_SADAR;
 } else {
-  $MemoNo = MEMO_NO_CHL;
-  $Dated  = MEMO_DATE_CHL;
-  $sign   = 'images/SDO-Chanchal-Sign.png';
-  $SubDiv = SDIV_CHL;
+  $MemoNo  = MEMO_NO_CHL;
+  $MemoNo2 = MEMO_NO_CHL2;
+  $Dated   = MEMO_DATE_CHL;
+  $sign    = 'images/SDO-Chanchal-Sign.png';
+  $SubDiv  = SDIV_CHL;
 }
 $pdf = new FPDF();
 $pdf->AddPage();
